@@ -1,0 +1,421 @@
+body {
+    font-family: "Montserrat";
+}
+
+li {
+    list-style: none;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+hr {
+    width: 5.625rem;
+    height: 0.1875rem;
+    background-color: #00ff6c;
+}
+
+/* botones mira nuestros servicios y contactanos*/
+.btn {
+    padding: .5rem 1.5rem;
+    border: 1px solid #00ff6c;
+    border-radius: 5rem;
+
+}
+
+.btn:hover {
+    background-color: #00ff6c;
+    color: #232323;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* parte menu desplegable cuando la pantalla esta en modo telefono*/
+.menu-responsive {
+    background-color: #00ff6c;
+    padding: 2rem 0;
+}
+
+.menu-responsive ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu-responsive ul li {
+    width: 100%;
+    padding: 1.5rem 0;
+    text-align: center;
+}
+
+.menu-responsive ul li a {
+    font-size: 1.125rem;
+    color: #232323;
+    transition: all 0.3s;
+}
+
+.menu-responsive ul li a:hover,
+.menu-responsive ul li a:active {
+    color: white;
+    text-decoration: none;
+}
+
+.header__top--responsive ul {
+    float: right;
+}
+
+/* desplegable menu tres rayas */
+.header__top--responsive ul li .menu-bars {
+    font-size: 2.4rem;
+    color: slategrey;
+
+    transition: all .3s;
+    list-style: none;
+}
+
+.header__top--responsive ul li .menu-bars:hover,
+.header__top--responsive ul li .menu-bars:active {
+    color: rgba(130, 0, 83);
+}
+
+/* imagen de fondo cabecera*/
+header {
+    height: 100vh;
+    background-image: url("../images/sunset.jpg");
+    /* background-image: url("https://b.kisscc0.com/20180517/vlq/kisscc0-xubuntu-long-term-support-desktop-wallpaper-omg-u-nature-5afd74c4e59777.5688697115265599409404.jpg"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+/* cabecera verde*/
+.header__top {
+    padding-top: 2.5rem;
+    margin-bottom: 6rem;
+    width: 100%;
+    display: flexbox;
+    display: flex;
+
+    justify-content: space-between;
+    flex-pack: justify;
+    justify-content: space-between;
+    box-align: start;
+    align-items: flex-start;
+    flex-align: start;
+    align-items: flex-start;
+}
+
+/* Margarita sl cabecera  morada*/
+.header__top-brand {
+    color: rgba(130, 0, 83);
+}
+
+.header__top-brand h1 {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 0.4rem;
+}
+
+.header__top-brand hr {
+    margin: 0;
+}
+
+.header__top-nav ul {
+    float: right;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.header__top-nav ul li {
+    display: inline-block;
+    margin-right: 2rem;
+}
+
+.header__top-nav ul li:last-child {
+    margin-right: 0;
+}
+
+.header__top-nav ul li a {
+    font-size: 1.25rem;
+    color: rgba(130, 0, 83);
+    line-height: 2.5rem;
+    font-weight: 300;
+    transition: all 0.3s;
+}
+
+/*  menu morado*/
+.header__top-nav ul li a:hover,
+.header__top-nav ul li a:active {
+    color: red;
+    text-decoration: none;
+}
+
+.header__content {
+    width: 80%;
+    margin: 0 auto;
+    color: black;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.header__content p {
+    line-height: 2.25rem;
+}
+
+.header__content p:first-child {
+    line-height: 3.3rem;
+}
+
+.header__content .btn {
+    margin-top: 3rem;
+}
+
+#nosotros {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+#nosotros img {
+    border: 2px solid #232323;
+    border-radius: 100%;
+    padding: .2rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+#nosotros .lead {
+    font-size: 1.5rem;
+    color: #00ff6c;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+#nosotros p {
+    font-size: 1.25rem;
+    color: #232323;
+}
+
+#nosotros p a {
+    color: #232323;
+    text-decoration: underline;
+    transition: all 0.3s;
+}
+
+#nosotros p a:hover {
+    color: #00ff6c;
+}
+
+#nosotros p + p {
+    margin-bottom: 2rem;
+}
+
+#servicios {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+/* seccion  de los servicios que ofrecemos*/
+.contenedor_eleccion {
+    background-color: #b7eaa8;
+    padding: 0.5rem 1rem;
+    transition: all 0.4s linear;
+    border-radius: 20px;
+    margin-top: 5px;
+}
+
+.contenedor_eleccion:hover {
+    border: 2px solid;
+    border border-bottom-color: #53934d;
+    background: white;
+    color: #53934d;
+}
+
+
+#contacto {
+    padding: 5rem 0;
+    background-color: #b7eaa8;
+    text-align: center;
+}
+
+#contacto .lead {
+    margin-bottom: -.25rem;
+    font-size: 1.85rem;
+    font-weight: 700;
+}
+
+#contacto p {
+    font-size: 1.65rem;
+    font-weight: 300;
+}
+
+#contacto .text-animate {
+    font-weight: 700;
+}
+
+#contacto .btn {
+    margin-top: 2.5rem;
+    border: 2px solid #232323;
+    color: #232323;
+}
+
+#contacto .btn:hover {
+    background-color: #232323;
+    color: #00ff6c;
+}
+
+#contacto .redes_sociales {
+    margin-top: 3rem;
+    font-size: 2rem;
+}
+
+#contacto .redes_sociales a {
+    color: #232323;
+    transition: all .3s;
+}
+
+#contacto .redes_sociales a:hover {
+    color: white;
+}
+
+/* acciones a realizar en funcion de los distintos tamaños de ventana*/
+@media (min-width: 47.9em) {
+    .header__top--responsive {
+        margin-top: -.75rem;
+    }
+
+    .header__top {
+        padding-top: 3.5rem;
+        margin-bottom: 10rem;
+    }
+
+    .header__content {
+        font-size: 2rem;
+    }
+
+    .header__content .btn {
+        padding: .6rem 1.7rem;
+    }
+
+    #nosotros {
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    #nosotros h2 {
+        font-size: 2.2rem;
+    }
+
+    #nosotros .lead {
+        font-size: 1.7rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #nosotros p {
+        font-size: 1.45rem;
+    }
+
+    #contacto .lead {
+        font-size: 2.05rem;
+    }
+
+    #contacto p {
+        font-size: 1.85rem;
+    }
+}
+
+@media (min-width: 61.9em) {
+    .header__top {
+        margin-bottom: 16rem;
+    }
+
+    .header__content {
+        font-size: 2.5rem;
+    }
+
+    .header__content p {
+        line-height: 2.45rem;
+    }
+
+    #nosotros {
+        width: 80%;
+    }
+
+    #nosotros h2 {
+        font-size: 2.4rem;
+    }
+
+    #nosotros .lead {
+        font-size: 1.9rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #nosotros p {
+        font-size: 1.65rem;
+    }
+
+
+
+    #contacto .lead {
+        font-size: 2.25rem;
+    }
+
+    #contacot p {
+        font-size: 2.05rem;
+    }
+}
+
+@media (min-width: 74.9em) {
+    .header__top {
+        margin-bottom: 9.5rem;
+    }
+
+    .header__content {
+        font-size: 3rem;
+    }
+
+    .header__content p {
+        line-height: 2.95rem;
+    }
+
+    .header__content .btn {
+        margin-top: 4rem;
+        font-size: 1.2rem;
+    }
+
+    #nosotros {
+        width: 60%;
+    }
+
+    #nosotros h2 {
+        font-size: 2.6rem;
+    }
+
+    #nosotros .lead {
+        font-size: 2.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #nosotros p {
+        font-size: 1.85rem;
+    }
+
+    #nosotros p + p {
+        margin-bottom: 2.2rem;
+    }
+
+    #contact .lead {
+        font-size: 2.45rem;
+    }
+
+    #contact p {
+        font-size: 2.25rem;
+    }
+}
+
+
+}
