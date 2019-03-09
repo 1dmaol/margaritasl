@@ -53,6 +53,13 @@ label {
   flex-direction: column;
 }
 
+#error {
+  color: red;
+  font-size: 12px;
+  padding-left: 25px;
+  opacity: 0;
+}
+
 form {
   margin: 0 auto;
   width: 300px;

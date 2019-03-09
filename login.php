@@ -16,7 +16,7 @@
             header('Location: index.html&name=' . $_POST['usuario']);
             exit();
         } else {
-		echo $_POST['usuario'] . " no es valido";
+		header("location:login.php?msg=failed");
         }
     }
 ?>
@@ -52,7 +52,10 @@
         <p />
 	<input name="clave" type="password" required placeholder="Introducir contraseña">
       </div>
-      <br>
+
+	<p id="error">Usuario o contraseña incorrectos.</p>
+
+
       <div class="div_boton">
         <input type="submit" value="Iniciar sesión" class="boton">
       </div>
@@ -71,20 +74,14 @@
     </form>
   </div>
 
-  <script>
-    var showing = false;
 
-    function saberMas() {
-      if (!showing) {
-        document.getElementById("popup").style.opacity = 1;
-        showing = true;
-      } else {
-        document.getElementById("popup").style.opacity = 0;
-        showing = false
-      }
-    }
-  </script>
-
+<script src="js/login.js"> </script>
+<?php 
+if (isset($_GET["msg"]) && $_GET["msg"] == 'failed'){ 
+?>	
+<script> mostrarError() </script>
+<?php }
+?>	
   </div>
 </body>
 
