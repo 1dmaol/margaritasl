@@ -1,5 +1,5 @@
 <?php
-    $servername = "localhost"; $username = "root"; $password = ""; $dbname = "FEED";
+    $servername = "localhost"; $username = "root"; $password = ""; $dbname = "margarita";
     $conexion = mysqli_connect($servername, $username, $password, $dbname) or
     die("Error en la conexión");
     /*

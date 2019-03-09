@@ -86,7 +86,6 @@ h2 {
 header {
     height: 100vh;
     background-image: url("../images/sunset.jpg");
-    /* background-image: url("https://b.kisscc0.com/20180517/vlq/kisscc0-xubuntu-long-term-support-desktop-wallpaper-omg-u-nature-5afd74c4e59777.5688697115265599409404.jpg"); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
@@ -97,7 +96,6 @@ header {
     padding-top: 2.5rem;
     margin-bottom: 6rem;
     width: 100%;
-    display: flexbox;
     display: flex;
 
     justify-content: space-between;
