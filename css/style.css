@@ -67,12 +67,12 @@ h2 {
     text-decoration: none;
 }
 
-.header__top--responsive ul {
+.header_top-responsive ul {
     float: right;
 }
 
 /* desplegable menu tres rayas */
-.header__top--responsive ul li .menu-bars {
+.header_top-responsive ul li .menu-bars {
     font-size: 2.4rem;
     color: rgb(130, 0, 83);
 
@@ -80,8 +80,8 @@ h2 {
     list-style: none;
 }
 
-.header__top--responsive ul li .menu-bars:hover,
-.header__top--responsive ul li .menu-bars:active {
+.header_top-responsive ul li .menu-bars:hover,
+.header_top-responsive ul li .menu-bars:active {
     color: rgba(130, 0, 83);
 }
 
@@ -95,7 +95,7 @@ header {
 }
 
 /* cabecera*/
-.header__top {
+.header_top{
     padding-top: 2.5rem;
     margin-bottom: 6rem;
     width: 100%;
@@ -115,23 +115,23 @@ header {
     color: rgb(130, 0, 83);
 }
 
-.header__top-nav ul {
+.top-nav ul {
     float: right;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.header__top-nav ul li {
+.top-nav ul li {
     display: inline-block;
     margin-right: 2rem;
 }
 
-.header__top-nav ul li:last-child {
+.top-nav ul li:last-child {
     margin-right: 0;
 }
 
-.header__top-nav ul li a {
+.top-nav ul li a {
     font-size: 1.25rem;
     color: rgba(130, 0, 83);
     line-height: 2.5rem;
@@ -140,13 +140,13 @@ header {
 }
 
 /* menu morado*/
-.header__top-nav ul li a:hover,
-.header__top-nav ul li a:active {
+.top-nav ul li a:hover,
+.top-nav ul li a:active {
     color: black;
     text-decoration: none;
 }
 
-.header__content {
+.header_content {
     width: 80%;
     margin: 0 auto;
     color: black;
@@ -154,21 +154,21 @@ header {
     text-align: center;
 }
 
-.header__content a {
+.header_content a {
     color: rgb(130, 0, 83);
     background-color: rgba(255,255,255,0.4);
 }
 
-.header__content a:hover {
+.header_content a:hover {
     background-color: rgba(211,211,211,0.8);
 }
 
-.header__content p {
+.header_content p {
     line-height: 2.25rem;
 }
 
 
-.header__content .btn {
+.header_content .btn {
     margin-top: 3rem;
 }
 
@@ -245,20 +245,20 @@ header {
         font-size: 2.2rem;
     }
     
-    .header__top--responsive {
+    .header_top-responsive {
         margin-top: -0.75rem;
     }
 
-    .header__top {
+    .header_top{
         padding-top: 3.5rem;
         margin-bottom: 10rem;
     }
 
-    .header__content {
+    .header_content {
         font-size: 2rem;
     }
 
-    .header__content .btn {
+    .header_content .btn {
         padding: .6rem 1.7rem;
     }
         
@@ -296,15 +296,15 @@ header {
         font-size: 2.4rem;
     }
     
-    .header__top {
+    .header_top{
         margin-bottom: 16rem;
     }
 
-    .header__content {
+    .header_content {
         font-size: 2.5rem;
     }
 
-    .header__content p {
+    .header_content p {
         line-height: 2.5rem;
     }
         
@@ -335,19 +335,19 @@ header {
 }
 
 @media (min-width: 75em) {
-    .header__top {
+    .header_top{
         margin-bottom: 9.5rem;
     }
 
-    .header__content {
+    .header_content {
         font-size: 3rem;
     }
 
-    .header__content p {
+    .header_content p {
         line-height: 2.95rem;
     }
 
-    .header__content .btn {
+    .header_content .btn {
         margin-top: 4rem;
         font-size: 1.2rem;
     }
