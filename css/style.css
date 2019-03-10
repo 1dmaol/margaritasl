@@ -42,7 +42,7 @@ h2 {
 
 /* parte menu desplegable cuando la pantalla esta en modo telefono*/
 .menu-responsive {
-    background-color: #00ff6c;
+    background-color: rgba(0, 255, 108, 0.5);
     padding: 2rem 0;
 }
 
@@ -364,10 +364,6 @@ header {
         line-height: 2.95rem;
     }
 
-    .header__content .btn {
-        margin-top: 4rem;
-        font-size: 1.2rem;
-    }
 
     #nosotros {
         width: 60%;

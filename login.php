@@ -60,6 +60,9 @@
         <input type="submit" value="Iniciar sesión" class="boton">
       </div>
       <br>
+
+	<a class="registrar" href="mailto:margaritasl@gmail.com">¿Olvidaste tu contraseña? ¡Contactanos!</a>
+<p/>
       <div class="div_registrar">
         <a href="#" onclick="saberMas()" class="registrar">¿No tienes cuenta?</a>
         <div class="saberMas-popup" id="popup">
