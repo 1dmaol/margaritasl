@@ -26,8 +26,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Login</title> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:300,400,700"rel="stylesheet'>
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -80,12 +80,12 @@
 
 
 <script src="js/login.js"> </script>
-<?php 
-if (isset($_GET["msg"]) && $_GET["msg"] == 'failed'){ 
-?>	
+<?php
+if (isset($_GET["msg"]) && $_GET["msg"] == 'failed'){
+?>
 <script> mostrarError() </script>
 <?php }
-?>	
+?>
   </div>
 </body>
 
