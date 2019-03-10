@@ -55,7 +55,8 @@ label {
 
 #error {
   color: red;
-  font-size: 12px;
+  font-size: 13px;
+  font-family:Montserrat;
   padding-left: 25px;
   opacity: 0;
 }
