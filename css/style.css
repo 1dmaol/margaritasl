@@ -2,8 +2,10 @@ body {
     font-family: "Montserrat";
 }
 
-li {
+ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .bold {
@@ -17,22 +19,17 @@ li {
 }
 
 hr {
-    width: 5.625rem;
-    height: 0.1875rem;
+    width: 6rem;
+    height: 0.2rem;
     background-color: rgb(130, 0, 83);
 }
 
 /* botones mira nuestros servicios y contactanos*/
 .btn {
-    padding: .5rem 1.5rem;
+    padding: 0.5rem 1rem;
     border: 1px solid rgb(130, 0,83);
     border-radius: 5rem;
 
-}
-
-.btn:hover {
-    background-color: #00ff6c;
-    color: rgb(130, 0, 83);
 }
 
 h2 {
@@ -42,7 +39,7 @@ h2 {
 
 /* parte menu desplegable cuando la pantalla esta en modo telefono*/
 .menu-responsive {
-    background-color: rgba(0, 255, 108, 0.5);
+    background-color: #64c7b5;
     padding: 2rem 0;
 }
 
@@ -97,7 +94,7 @@ header {
     background-position: top;
 }
 
-/* cabecera verde*/
+/* cabecera*/
 .header__top {
     padding-top: 2.5rem;
     margin-bottom: 6rem;
@@ -116,16 +113,6 @@ header {
 /* Margarita sl cabecera  morada*/
 .header__top-brand {
     color: rgb(130, 0, 83);
-}
-
-.header__top-brand h1 {
-    font-size: 2rem;
-    font-weight: 300;
-    margin-bottom: 0.4rem;
-}
-
-.header__top-brand hr {
-    margin: 0;
 }
 
 .header__top-nav ul {
@@ -152,7 +139,7 @@ header {
     transition: all 0.3s;
 }
 
-/*  menu morado*/
+/* menu morado*/
 .header__top-nav ul li a:hover,
 .header__top-nav ul li a:active {
     color: black;
@@ -169,7 +156,11 @@ header {
 
 .header__content a {
     color: rgb(130, 0, 83);
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,0.4);
+}
+
+.header__content a:hover {
+    background-color: rgba(211,211,211,0.8);
 }
 
 .header__content p {
@@ -192,82 +183,70 @@ header {
     color: #232323;
 }
 
-#nosotros p + p {
-    margin-bottom: 2rem;
-}
-
-#servicios {
-
-    text-align: center;
-}
 
 /* seccion  de los servicios que ofrecemos*/
-.contenedor_eleccion {
-    background-color: #b7eaa8;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    margin-top: 5px;
+
+#servicios {
+    padding: 50px;
+    text-align: center;
+    background: rgba(211,211,211,0.6);
 }
 
-.contenedor_eleccion:hover {
-    border: 2px solid;
-    background: white;
-    color: #53934d;
+#servicios ul {
+    column-count: 1;
 }
 
+#servicios img {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+}
 
 /*CONTACTO*/
 
 #contacto {
-    padding: 5rem 0;
-    background-color: #b7eaa8;
+    padding: 3rem;
+    background-color: #64c7b5;
     text-align: center;
 }
 
-#contacto .lead {
-    margin-bottom: -.25rem;
-    font-size: 1.85rem;
-    font-weight: 700;
-}
-
-#contacto p {
-    font-size: 1.65rem;
-    font-weight: 300;
-}
-
-#contacto .text-animate {
+#contacto .text-strong {
     font-weight: 700;
 }
 
 #contacto .btn {
     margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
     border: 2px solid #232323;
     color: #232323;
 }
 
 #contacto .btn:hover {
     background-color: #232323;
-    color: #00ff6c;
+    color: #64c7b5;
 }
 
-#contacto .redes_sociales {
-    margin-top: 3rem;
-    font-size: 2rem;
+#contacto img{
+    width: 50px;
+    height: 50px;
+    padding: 10px;
 }
 
-#contacto .redes_sociales a {
-    color: #232323;
-    transition: all .3s;
+#contacto ul {
+    display: flex;
+    justify-content: center;
 }
 
-#contacto .redes_sociales a:hover {
-    color: white;
-}
 
 /* acciones a realizar en funcion de los distintos tamaños de ventana*/
-@media (min-width: 47.9em) {
+@media (min-width: 48em) {
+    
+    h2 {
+        font-size: 2.2rem;
+    }
+    
     .header__top--responsive {
-        margin-top: -.75rem;
+        margin-top: -0.75rem;
     }
 
     .header__top {
@@ -282,14 +261,14 @@ header {
     .header__content .btn {
         padding: .6rem 1.7rem;
     }
-
+        
+    #servicios ul {
+        column-count: 2;
+    }
+    
     #nosotros {
         width: 85%;
         margin: 0 auto;
-    }
-
-    #nosotros h2 {
-        font-size: 2.2rem;
     }
 
     #nosotros .lead {
@@ -308,9 +287,15 @@ header {
     #contacto p {
         font-size: 1.85rem;
     }
+    
 }
 
-@media (min-width: 61.9em) {
+@media (min-width: 60em) {
+    
+    h2 {
+        font-size: 2.4rem;
+    }
+    
     .header__top {
         margin-bottom: 16rem;
     }
@@ -320,15 +305,15 @@ header {
     }
 
     .header__content p {
-        line-height: 2.45rem;
+        line-height: 2.5rem;
     }
-
+        
+    #servicios ul {
+        column-count: 2;
+    }
+    
     #nosotros {
         width: 80%;
-    }
-
-    #nosotros h2 {
-        font-size: 2.4rem;
     }
 
     #nosotros .lead {
@@ -340,8 +325,6 @@ header {
         font-size: 1.65rem;
     }
 
-
-
     #contacto .lead {
         font-size: 2.25rem;
     }
@@ -351,7 +334,7 @@ header {
     }
 }
 
-@media (min-width: 74.9em) {
+@media (min-width: 75em) {
     .header__top {
         margin-bottom: 9.5rem;
     }
@@ -364,7 +347,15 @@ header {
         line-height: 2.95rem;
     }
 
-
+    .header__content .btn {
+        margin-top: 4rem;
+        font-size: 1.2rem;
+    }
+    
+    #servicios ul {
+        column-count: 3;
+    }
+    
     #nosotros {
         width: 60%;
     }
@@ -380,10 +371,6 @@ header {
 
     #nosotros p {
         font-size: 1.85rem;
-    }
-
-    #nosotros p + p {
-        margin-bottom: 2.2rem;
     }
 
     #contact .lead {

@@ -4,29 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Landing page</title>
- <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:300,400,700"rel="stylesheet'>
     <link rel="stylesheet" href="css/style.css">
 
+
 </head>
 
 <body>
-    
-<!-- menu que aparece cuando se pasa a la version movil de la página-->
+    <!-- menu que aparece cuando se pasa a la version movil de la página-->
     <div class="menu-responsive">
         <nav>
             <ul>
-                <li><a class="scroll" href="#nosotros">La empresa</a></li>
+                <li><a class="scroll" href="#nosotros">About Us</a></li>
                 <li><a class="scroll" href="#servicios">Servicios</a></li>
                 <li><a class="scroll" href="#contacto">Contacto</a></li>
                 <li><a class="scroll" href="login.php">Login</a></li>
             </ul>
         </nav>
     </div>
-    <header>
 
+    <header>
         <div class="container">
             <div class="row">
                 <div class="header__top">
@@ -36,10 +37,10 @@
                     <!-- menu que aparece arriba a la derecha-->
                     <nav class="col-md-6 header__top-nav hidden-md-down">
                         <ul>
-                <li><a class="scroll" href="#nosotros">La empresa</a></li>
-                <li><a class="scroll" href="#servicios">Servicios</a></li>
-                <li><a class="scroll" href="#contacto">Contacto</a></li>
-                <li><a class="scroll" href="login.php">Login</a></li>
+                            <li><a class="scroll" href="#nosotros">About Us</a></li>
+                            <li><a class="scroll" href="#servicios">Servicio</a></li>
+                            <li><a class="scroll" href="#contacto">Contacto</a></li>
+                            <li><a class="scroll" href="login.php">Login</a></li>
                         </ul>
                     </nav>
                     <nav class="header__top--responsive hidden-lg-up">
@@ -50,8 +51,10 @@
                     </nav>
                 </div>
             </div>
+
             <div class="header__content">
-                <p class="bold">Margarita S.L.</p>
+                <h2>Margarita S.L.</h2>
+                <hr>
                 <p>Tu menor trabajo,<span class="bold"> nuestro MAYOR esfuerzo</span></p>
 
                 <a class="btn scroll" href="#servicios">Mira nuestros servicios</a>
@@ -64,14 +67,13 @@
         <div class="container">
             <h2>Sobre nosotros</h2>
             <hr>
-            <p> <span class="bold">Margarita S.L. </span><strong>es una empresa pionera</strong> e <strong>innovadora </strong>en el sector agrícola</p>
-            
- <video width="320" height="240" style="object-fit: fill;width: 100%; height: auto" autoplay controls>
-  <source src="media/feed.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video> 
-            <!-- seccion video margarita sl youtube
-            <p> <iframe width="560" height="315" src="https://www.youtube.com/embed/m-AeELuIXt0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>-->
+            <p>Somos <span class="bold">Margarita S.L. </span><strong>Una empresa pionera</strong> e <strong>innovadora </strong>en el sector agrícola</p>
+            <!-- seccion video margarita sl youtube-->
+            <video width="320" height="240" style="object-fit: fill;width: 100%; height: auto" controls>
+                <source src="media/feed.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
         </div>
     </section>
 
@@ -79,63 +81,44 @@ Your browser does not support the video tag.
         <div class="container">
             <h2>¿Qué ofrecemos?</h2>
             <hr>
-
         </div>
-        <div>
-            <div>
-                <section>
-                    <div>
-                        <div>
-                            <ul>
-                                <a href="#">
-                                    <li class="contenedor_eleccion">
-                                        <h4>APPs para la nube</h4>
-                                    </li>
-                                </a>
-                                <a href="#">
-                                    <li class="contenedor_eleccion">
-                                        <h4>Gráficas para usuarios</h4>
-                                    </li>
-                                </a>
-                                <a href="#">
-                                    <li class="contenedor_eleccion">
-                                        <h4>Gestión propia del usuario</h4>
-                                    </li>
-                                </a>
-                            </ul>
+        <ul>
+            <li><img src="images/icons/cloud-computing.svg" alt="Apps para la nube">
+                <h4>Apps para la <strong>nube</strong></h4>
+            </li>
+            <li><img src="images/icons/graficas.svg" alt="Gráficas para usuarios">
+                <h4><strong>Gráficas</strong> para usuarios</h4>
+            </li>
+            <li><img src="images/icons/user.svg" alt="Gestión propia del usuario">
+                <h4>Gestión propia del <strong>usuario</strong></h4>
+            </li>
+            <li><img src="images/icons/multiplataforma.svg" alt="Conexión multiplataforma">
+                <h4>Conexión <strong>multiplataforma</strong></h4>
+            </li>
+            <li><img src="images/icons/information.svg" alt="Información constante">
+                <h4><strong>Información</strong> constante</h4>
+            </li>
+            <li><img src="images/icons/gears.svg" alt="Variedad de funcionalidades">
+                <h4>Variedad de <strong>funcionalidades</strong></h4>
+            </li>
+        </ul>
 
-
-                            <ul>
-                                <a href="#">
-                                    <li class="contenedor_eleccion">
-                                        <h4>Conexión multiplataforma</h4>
-                                    </li>
-                                </a>
-                                <a href="#">
-                                    <li class="contenedor_eleccion">
-                                        <h4>Información constante</h4>
-                                    </li>
-                                </a>
-                                <a href="#">
-                                    <li class="contenedor_eleccion">
-                                        <h4>Variedad de funcionalidades</h4>
-                                    </li>
-                                </a>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-                <!-- -->
-            </div>
-        </div>
     </section>
-    <section id="contacto">
+    <footer id="contacto">
         <div class="container">
-            <p>Tienes alguna<span class="text-animate"> duda?</span></p>
+            <p>Tienes alguna<span class="text-strong"> duda?</span></p>
             <!-- seccion para enviar un email directamente a margarita sl-->
             <a class="btn" href="mailto:margaritasl@gmail.com">Contáctanos</a>
         </div>
-    </section>
+        
+        <div class="redes-sociales">
+        <ul>
+            <li><a href="#"><img src="images/icons/facebook-letter-logo.svg" alt="Facebook"></a></li>
+            <li><a href="#"><img src="images/icons/twitter.svg" alt="Twitter"></a></li>
+            <li><a href="#"><img src="images/icons/youtube-logo.svg" alt="Youtube"></a></li>
+        </ul>
+        </div>
+    </footer>
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
