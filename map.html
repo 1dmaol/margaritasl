@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        var vertices = [{
+                lat: 38.9972898,
+                lng: -0.1615764
+            },
+            {
+                lat: 38.989751,
+                lng: -0.1637317
+            },
+            {
+                lat: 38.9945902,
+                lng: -0.1702963
+            },
+            {
+                lat: 39.0024245,
+                lng: -0.1671629
+            }
+        ]
+
+        var puntos = [{
+                lat: 38.9968709,
+                lng: -0.1668007
+            },
+            {
+                lat: 38.993293,
+                lng: -0.162206
+            }
+        ]
+        var map;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {
+                    lat: 38.99414,
+                    lng: -0.1536891
+                },
+                zoom: 16,
+                mapTypeId: google.maps.MapTypeId.HYBRID
+            });
+
+            setTimeout(ponerPuntos, 1000);
+            setTimeout(dibujarPoligono, 1500);
+
+        }
+
+        function ponerPuntos() {
+
+            var limitesMapa = map.getBounds();
+
+            for (var i = 0; i <= puntos.length - 1; i++) {
+                var marca = new google.maps.Marker({
+                    position: puntos[i],
+                    map: map
+                });
+                limitesMapa.extend(puntos[i]);
+            }
+            map.fitBounds(limitesMapa);
+        }
+
+        function dibujarPoligono() {
+            var poligono = new google.maps.Polygon({
+                paths: vertices,
+                map: map,
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#FF0000',
+                fillOpacity: 0.35,
+                editable: true
+            });
+
+            poligono.addListener('mouseup', function() {
+                console.log(JSON.stringify(poligono.getPath().getArray()));
+            })
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+</body>
+</html>

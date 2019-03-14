@@ -46,12 +46,12 @@
       </div>
       <br>
 
-	<a class="registrar" href="mailto:margaritasl@gmail.com">¿Olvidaste tu contraseña? ¡Contactanos!</a>
+	<a class="registrar" href="mailto:margaritasl@gmail.com">Recupera tu contraseña.</a>
 <p/>
       <div class="div_registrar">
-        <a href="#" onclick="saberMas()" class="registrar">¿No tienes cuenta?</a>
+        <a href="#" onclick="saberMas()" class="registrar">Obtén una cuenta.</a>
         <div class="saberMas-popup" id="popup">
-          <span class="registrar">Obtén una cuenta</span>
+          <span class="registrar">Adquiere tu producto.</span>
           <img src="images/close.svg" alt="close" class="cross-popup" onclick="saberMas()">
           <br>
           <p class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia nostrum porro, quos deleniti odit, ratione sequi magnam sit tenetur voluptates repudiandae similique iusto veritatis delectus ab est nesciunt ad nemo.</p>
