@@ -12,6 +12,7 @@
   <meta charset="UTF-8">
   <title>Login</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="images/favicon.png">
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:300,400,700"rel="stylesheet'>
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -45,19 +46,6 @@
         <input type="submit" value="Iniciar sesión" class="boton">
       </div>
       <br>
-
-	<a class="registrar" href="mailto:margaritasl@gmail.com">Recupera tu contraseña.</a>
-<p/>
-      <div class="div_registrar">
-        <a href="#" onclick="saberMas()" class="registrar">Obtén una cuenta.</a>
-        <div class="saberMas-popup" id="popup">
-          <span class="registrar">Adquiere tu producto.</span>
-          <img src="images/close.svg" alt="close" class="cross-popup" onclick="saberMas()">
-          <br>
-          <p class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia nostrum porro, quos deleniti odit, ratione sequi magnam sit tenetur voluptates repudiandae similique iusto veritatis delectus ab est nesciunt ad nemo.</p>
-          <a href="#">Saber más</a>
-        </div>
-      </div>
 
     </form>
   </div>

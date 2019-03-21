@@ -1,7 +1,9 @@
 <?
 if(isset($_GET['salir'])){
         unset($_SESSION['id']);
-        header('Location: index.html');
+        unset($_SESSION['nombre']);
+        unset($_SESSION['email']);
+        header('Location: index.php');
     }
 $sql = "SELECT * FROM usuarios WHERE id=" . $_SESSION['id'];
         $result = mysqli_query($conexion,$sql);

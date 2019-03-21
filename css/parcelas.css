@@ -1,0 +1,66 @@
+
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+/*
+  background: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url("../images/sunset.jpg");
+  background-size: cover;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: top;
+  */
+}
+
+
+/* imagen de fondo cabecera*/
+header {
+  /*Quitar para un background normal : 
+
+  background-image: url("../images/test.jpeg");*/
+    width: auto;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+
+.logoImg img {
+  height: 120px;
+}
+
+.boton {
+  height: 40px;
+  border: 0px solid black;
+  background: rgb(130, 0, 83);
+  border-radius: 3px;
+  padding: 8px;
+  color: white;
+  font-family: "Montserrat";
+}
+
+#listaParcelas {
+  padding: 1rem;
+  text-align: center;
+}
+
+#btn-menu {
+  display:none;
+}
+
+.top-nav {
+  display: inline-block;
+}
+
+/* Style page content */
+#contenedor {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+/* Always set the map height explicitly to define the size of the div
+   * element that contains the map. */
+   #map {
+    width: 100%;
+    height: 70%;
+    margin: 0 auto;
+  }

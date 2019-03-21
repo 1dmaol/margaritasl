@@ -32,13 +32,13 @@ label {
   text-align: center;
 }
 
-.boton {
-  height: 40px;
-  border: 0px solid black;
-  background: rgb(130, 0, 83);
-  color: white;
-  font-family: "Montserrat";
-}
+  .boton {
+    height: 40px;
+    border: 0px solid black;
+    background: rgb(130, 0, 83);
+    color: white;
+    font-family: "Montserrat";
+  }
 
 .formulario {
   background-image: url(../images/sunset.jpg);
