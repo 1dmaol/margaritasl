@@ -39,7 +39,9 @@ function vaciarMapa() {
   puntos = []
 }
 
-function dibujarPoligono(vertices) {
+var poligonos = []
+
+function dibujarPoligono(vertices, parcela) {
   var poligono = new google.maps.Polygon({
     paths: vertices,
     map: map,
@@ -51,7 +53,11 @@ function dibujarPoligono(vertices) {
     editable: true
   });
 
+
+
   poligono.addListener('mouseup', function() {
-    parcelaChange();
+    parcelaChange(parcela);
   })
+
+  poligonos.push(poligono)
 }

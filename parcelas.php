@@ -85,7 +85,7 @@ if(isset($_GET['salir'])){
         </div>
 
         <div id="listaParcelas">
-            <select name="parcelas[]" id="parcelas" onchange="parcelaChange()">
+            <select name="parcelas[]" id="parcelas" onchange="parcelaChangeSelector()">
                 <option value="" disabled selected>Selecciona la parcela</option>
             </select>
             <button class="boton" onclick="dibujarParcelas()">Mostrar todas las parcelas</button>
@@ -100,8 +100,11 @@ if(isset($_GET['salir'])){
                 vaciarMapa();
                 dibujarParcela(<?php echo $vertices ?>);
             }
-            function parcelaChange() {
-                seleccionarParcela(<?php echo $vertices; ?>, <?php echo $sondas ?>, <?php echo $_SESSION['id'];?>);
+            function parcelaChangeSelector() {
+                seleccionarParcelaSelector(<?php echo $vertices; ?>, <?php echo $sondas; ?>);
+            }
+            function parcelaChange(parcela){
+                seleccionarParcela(<?php echo $vertices; ?>, <?php echo $sondas; ?>, parcela);
             }
         </script>
 
