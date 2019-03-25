@@ -1,0 +1,3 @@
+# Ejemplo 3: bloquear todo menos los rastreadores de AdsBot
+User-agent: * 
+Disallow: / 

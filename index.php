@@ -1,6 +1,6 @@
 <?php 
     if(isset($_SESSION['id'])){
-        header('Location: parcelas.php');
+        header('Location: app/parcelas.php');
     }
 ?>
 <!DOCTYPE html>
@@ -11,6 +11,7 @@
         <title>Margarita S.L.</title>
         <link rel="icon" href="images/favicon.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="app/">
         <link
             rel='stylesheet'
             href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>

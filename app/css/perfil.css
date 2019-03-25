@@ -1,0 +1,120 @@
+.container {
+  margin:0 auto;
+  margin-top: 40px;
+  width: 300px;
+  height: 400px;
+  padding: 1rem;
+  border: 0px solid #CCC;
+  border-radius: 6px;
+  background-color: rgb(131, 123, 121, 0.3);
+}
+
+.container_principal {
+  background-image: url(../images/sunset.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+}
+
+#pdatosGuardados {
+  color: red;
+  font-size: 12px;
+  font-family: "Montserrat";
+  text-align: center;
+}
+
+#datosGuardados {
+    display: none;
+}
+
+.div_boton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.boton_recup_editar {
+  width: 117px;
+  height: 40px;
+    margin: 0.5rem;
+  border: 0px solid black;
+  background: rgb(130, 0, 83);
+  color: white;
+  font-family: "Montserrat";
+}
+
+.boton_recup_cerrarS {
+  width: 117px;
+  height: 40px;
+    margin: 0.5rem;
+  border: 0px solid black;
+  background: gray;
+  color: white;
+  font-family: "Montserrat";
+}
+
+.boton_recup_enviar {
+  width: 117px;
+  height: 40px;
+    margin: 0.5rem;
+  border: 0px solid black;
+  background: rgb(130, 0, 83);
+  color: white;
+  font-family: "Montserrat";
+}
+
+.boton_recup_cancel {
+  width: 117px;
+  height: 40px;
+  margin: 0.5rem;
+  border: 0px solid black;
+  background: gray;
+  color: white;
+  font-family: "Montserrat";
+}
+
+.div_formulario {
+  margin: 0 auto;
+  width: auto;
+  text-align: center;
+}
+
+input {
+  width: 250px;
+  height: 40px;
+  border: 0px solid black;
+  border-radius: 3px;
+  padding: 8px;
+  box-sizing: border-box;
+  font-family: "Montserrat";
+  /*background: rgba(155,155,155,0.5);*/
+}
+
+img {
+    width: 150px;
+    height:150px;
+}
+
+p {
+  color: rgb(130, 0, 83);
+  font-size: 15px;
+  font-family: "Montserrat";
+}
+
+.UsuarioyEmail {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.sesiones{
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: rgba(255,255,255,0.5);
+    padding: 0.5rem;
+    border: 0px solid black;
+    border-radius: 3px;
+}

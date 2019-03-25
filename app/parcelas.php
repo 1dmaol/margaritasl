@@ -9,7 +9,7 @@ if(isset($_GET['salir'])){
     unset($_SESSION['id']);
     unset($_SESSION['nombre']);
     unset($_SESSION['email']);
-    header('Location: index.php');
+    header('Location: ../index.php');
 }
 ?>
 
@@ -54,7 +54,7 @@ if(isset($_GET['salir'])){
                                 <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Editar perfil</a>
+                            <a class="nav-link" href="verPerfil.php">Ver perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="?salir">Cerrar sesión</a>

@@ -1,5 +1,4 @@
-
-var showing = false;
+/*var showing = false;
 
     function saberMas() {
 	      if (!showing) {
@@ -7,11 +6,12 @@ var showing = false;
 		showing = true;
 	      } else {
 		document.getElementById("popup").style.opacity = 0;
-		showing = false
+		showing = false;
 	      }	
 	}
-
+*/
 function mostrarError(){
-	document.getElementById("error").style.opacity = 1;
+	document.getElementById("error").style.display = "block";
+    document.getElementById("form").style.height = "300px";
 }   
-
+   
