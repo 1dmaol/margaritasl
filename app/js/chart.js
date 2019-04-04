@@ -36,7 +36,6 @@ function llenarGrafica(id_sonda, nombre_parcela) {
         if (porcentaje.id == id_sonda && porcentaje.nombre == nombre_parcela) {
             lista.push(porcentaje.temperatura, porcentaje.humedad, porcentaje.salinidad, porcentaje.iluminacion, porcentaje.presion)
             nombre = porcentaje.nombre;
-            console.log("Sonda : ", id_sonda, " - Nombre: ", nombre);
         }
     });
     identificador = "Sonda " + id_sonda + " (" + nombre_parcela + ")";

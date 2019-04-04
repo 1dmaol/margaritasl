@@ -47,9 +47,6 @@ if(isset($_GET['salir'])){
                             <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="verPerfil.php">Ver perfil</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="?salir">Cerrar sesión</a>
                     </li>
                 </ul>
@@ -58,6 +55,7 @@ if(isset($_GET['salir'])){
 
                         <div class="form-inline my-2 my-lg-0" style="float:right;font-size:13px;">
                             Editar
+                            <img src="images/pencil-alt-solid.svg" alt="editar" class="editar">
                         </div>
                         <div class="form-inline my-2 my-lg-0">
                             <p>
@@ -79,10 +77,7 @@ if(isset($_GET['salir'])){
             <div id="listaParcelas">
                 <div>
                     <input id="buscador" type="text" placeholder="Buscar..." onkeydown="buscarParcela()">
-                    <button id="todasParcelas" class="btn">Parcelas</button>
-                    <div id="parcelas">
-
-                    </div>
+                    <div id="parcelas"></div>
                 </div>
             </div>
             <div id="extra">
@@ -94,8 +89,10 @@ if(isset($_GET['salir'])){
         </div>
         <div id="grafica" class="grafica hidden visuallyhidden">
             <!--Nos permite dibujar en un "lienzo"-->
+            <a href="javascript:esconderGrafica()" class="plegar"><img src="images/angle.svg" alt="plegar"></a>
+            <h2>Gráfico de las mediciones</h2>
             <canvas id="myChart"></canvas>
-            <button class="btn btn-primary" onclick="vaciarGrafica()">Vaciar gráfica</button>
+            <button class="boton" onclick="vaciarGrafica()">Vaciar gráfica</button>
         </div>
     </div>
     <script src="js/parcelas.js"></script>

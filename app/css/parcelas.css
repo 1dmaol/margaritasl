@@ -19,6 +19,17 @@ header {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
+.editar {
+    width:25px;
+    padding: 5px;
+}
+
+.plegar {
+    width:20px;
+    float: left;
+    transform: rotate(180deg);
+}
+
 #extra {
     margin-top: 60%;
     display: block;

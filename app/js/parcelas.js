@@ -82,9 +82,6 @@ function buscarParcela() {
 }
 
 function crearListaParcelas(json) {
-    
-    var button = document.getElementById("todasParcelas");
-    button.value = "Seleccionar todas las parcelas";
     var element = document.getElementById("parcelas");
     for (parcela of json) {
         var input = document.createElement("input");
@@ -165,12 +162,13 @@ function mostrarPosicionesMapa(id) {
     sondas.forEach(sonda => {
         if (sonda.id_parcela == id) {
             var parcela = parcelas.find(x => x.id === sonda.id_parcela);
-            console.log(parcela.nombre)
+            var porcentaje = porcentajes.find(x => x.id === sonda.id && x.nombre === parcela.nombre);
             var contenido = '<div id="content">' + '<h4>Sensor ' + sonda.id + ' </h4>' +
-                '<div id="bodyContent">' +
-                '<p><b>T: </b> los sensores de la parcela ' + sonda.id_parcela + '</p>' +
+                '<div id="bodyContent" style="text-align:center;">' +
+                '<p><img src="images/temperature.svg" alt="Temperatura" width="30px" height="30px"></img>' + Math.floor(porcentaje.temperatura) + '%  <img src="images/sun.svg" alt="Iluminacion" width="30px" height="30px"></img>' + Math.floor(porcentaje.iluminacion) + '%  <img src="images/salt.svg" alt="Salinidad" width="30px" height="30px"></img>' + Math.floor(porcentaje.salinidad) + '%  <img src="images/water.svg" alt="Humedad" width="30px" height="30px"></img>' + Math.floor(porcentaje.humedad) + '%  <img src="images/preasure.svg" alt="Presion" width="30px" height="30px"></img>' + Math.floor(porcentaje.presion) + '%  <br></p>' +
+                '<p> Ultima medida: '+ porcentaje.tiempo +'<br></p>' +
                 '<p><a href="javascript:llenarGrafica(\'' + sonda.id + '\', \'' + parcela.nombre + '\')">' +
-                'Comparación</a> ' +
+                '<button class="boton">Comparar</button></a> ' +
                 '</div>' +
                 '</div>';
             ponerPunto(new google.maps.LatLng(parseFloat(sonda.lat), parseFloat(sonda.lng)), contenido, id)
@@ -181,4 +179,10 @@ function mostrarPosicionesMapa(id) {
 function mostrarGrafica(){
     var element = document.getElementById("grafica");
     if(element.style.display == "") element.style.display = "flex";
+}
+
+function esconderGrafica(){
+    
+    var element = document.getElementById("grafica");
+    if(element.style.display == "flex") element.style.display = "";
 }
