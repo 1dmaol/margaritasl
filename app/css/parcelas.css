@@ -49,6 +49,12 @@ header {
     font-family: "Montserrat";
 }
 
+.grafica {
+    display: flex;
+    align-items: center;
+    flex: 1 1 80%;
+}
+
 #grafico {
     flex: 0 1 33%;
 }

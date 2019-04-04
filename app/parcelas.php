@@ -25,6 +25,7 @@ if(isset($_GET['salir'])){
     <!-- CSS BOOTSTRAP -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- FIN BOOTSTRAP-->
+
 </head>
 
 <body>
@@ -82,26 +83,27 @@ if(isset($_GET['salir'])){
                 </div>
             </div>
             <div id="extra">
-            AQUI VENDRIA EL PLUGIN DE LO QUE SEA GUAY
+                AQUI VENDRIA EL PLUGIN DE LO QUE SEA GUAY
             </div>
         </div>
 
         <div id="map">
             <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async="async" defer="defer"></script>
         </div>
-        <!--
-        <div id="grafico">
-            <img src="https://docs.mongodb.com/charts/master/_images/stacked-bar-chart-reference-small.png" alt="grafica">
+        <div id="grafica" class="grafica hidden visuallyhidden">
+            <!--Nos permite dibujar en un "lienzo"-->
+            <canvas id="myChart"></canvas>
         </div>
--->
     </div>
     <script src="js/parcelas.js"></script>
     <script src="js/map.js"></script>
     <script>
         var charged = true;
+
         getVertices(<?php echo $_SESSION['id']; ?>);
         getParcelas(<?php echo $_SESSION['id']; ?>);
         getSondas(<?php echo $_SESSION['id']; ?>);
+        getMediciones(<?php echo $_SESSION['id']; ?>);
         window.addEventListener("load", function () {
             dibujarParcelas();
         })
@@ -109,8 +111,10 @@ if(isset($_GET['salir'])){
 
     <!-- carga archivos JS -->
     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/chart.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/chart.js"></script>
 </body>
 
 </html>

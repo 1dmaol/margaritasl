@@ -2,13 +2,15 @@ var usuario;
 var parcelas = [];
 var vertices = [];
 var sondas = [];
+var mediciones = [];
 var selector = [];
 var all = true;
 
 function getParcelas(id) {
-    fetch("http://localhost/margaritafinal/api/v1.0/parcelas?usuario=" + id)
+    fetch("../api/v1.0/parcelas?id=" + id)
         .then(
             function (response) {
+                console.log(response)
                 return response.json()
             }
         )
@@ -19,7 +21,7 @@ function getParcelas(id) {
 }
 
 function getVertices(id) {
-    fetch("http://localhost/margaritafinal/api/v1.0/vertices?usuario=" + id)
+    fetch("../api/v1.0/vertices?id=" + id)
         .then(
             function (response) {
                 return response.json()
@@ -31,7 +33,7 @@ function getVertices(id) {
 }
 
 function getSondas(id) {
-    fetch("http://localhost/margaritafinal/api/v1.0/sondas?usuario=" + id)
+    fetch("../api/v1.0/sondas?id=" + id)
         .then(
             function (response) {
                 return response.json()
@@ -40,6 +42,22 @@ function getSondas(id) {
         .then(function (json) {
             sondas = json.datos;
         })
+}
+
+// Se podrían cargar las mediciones dependiendo de la sondas que has
+// seleccionado para no sobrecargar tanto la memoría en caso de haber
+// muchas mediciones.
+/* En este caso se cargarán todas las mediciones al principio */
+function getMediciones(id){
+    fetch("../api/v1.0/mediciones?id=" + id)
+    .then(
+        function (response){
+            return response.json()
+        }
+    )
+    .then(function (json) {
+        mediciones = json.datos;
+    })
 }
 
 function buscarParcela() {
@@ -125,14 +143,18 @@ function dibujarParcelas() {
     });
 }
 
+
+
 function mostrarPosicionesMapa(id) {
     sondas.forEach(sonda => {
         if (sonda.id_parcela == id) {
+            var medidas = mediciones.find(x => x.id === sonda.id);
+            console.log(medidas)
             var contenido = '<div id="content">' + '<h4>Sensor ' + sonda.id + ' </h4>' +
                 '<div id="bodyContent">' +
-                '<p><b>Mediciones</b> tomadas de los sensores de la parcela ' + id + '</p>' +
-                '<p><a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-                'Informacion avanzada</a> ' +
+                '<p><b>T: </b> ' +  + 'os sensores de la parcela ' + id + '</p>' +
+                '<p><a href="javascript:llenarDiagrama(' + sonda.id + ')">' +
+                'Comparación</a> ' +
                 '</div>' +
                 '</div>';
             ponerPunto(new google.maps.LatLng(parseFloat(sonda.lat), parseFloat(sonda.lng)), contenido, id)

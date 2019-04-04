@@ -1,6 +1,6 @@
 <?php
 
-$sql = "SELECT pu.id_parcela, s.id, p.lat, p.lng FROM `posiciones` p,`sondas` s, `parcelas_de_usuarios` pu WHERE p.id=s.id_posicion AND s.id_parcela=pu.id_parcela AND pu.id_usuario=" . $query_params['usuario'];
+$sql = "SELECT pu.id_parcela, s.id, p.lat, p.lng FROM `posiciones` p,`sondas` s, `parcelas_de_usuarios` pu WHERE p.id=s.id_posicion AND s.id_parcela=pu.id_parcela AND pu.id_usuario=" . $query_params['id'];
     
 $resultado = mysqli_query($conexion, $sql);
 

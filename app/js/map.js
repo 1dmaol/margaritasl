@@ -16,6 +16,8 @@ function initMap() {
         });
 }
 
+var infoW = null;
+
 function ponerPunto(posicion, contenido, id) {
         var marca = new google
             .maps
@@ -34,8 +36,10 @@ function ponerPunto(posicion, contenido, id) {
             .maps
             .event
             .addListener(marca,'click', function () {
+                if (infoW != null) infoW.close();
                 var marker_map = this.getMap();
                 this.info.open(marker_map, this);
+                infoW = this.info;
             });
         puntos.push(marca)
 }
@@ -48,19 +52,6 @@ function vaciarMapa() {
     puntos.forEach(punto => {
         punto.setMap(null)
     })
-
-    /*
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {
-      lat: 38.99414,
-      lng: -0.1536891
-    },
-    zoom: 13,
-    mapTypeId: google.maps.MapTypeId.HYBRID
-  });
-  parcelas = []
-  puntos = []
-  */
 }
 
 function mostrarOcultarPoligono(parcela) {
