@@ -10,6 +10,11 @@ html {
     background: yellow;
 }
 
+.Lapiz_editar{
+    width:30px;
+    padding: 5px;
+}
+
 #parcelas {
     overflow: hidden;
     overflow-y: scroll;

@@ -47,9 +47,6 @@ if(isset($_GET['salir'])){
                             <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="verPerfil.php">Ver perfil</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="?salir">Cerrar sesión</a>
                     </li>
                 </ul>
@@ -58,6 +55,7 @@ if(isset($_GET['salir'])){
 
                         <div class="form-inline my-2 my-lg-0" style="float:right;font-size:13px;">
                             Editar
+                            <img src="images/pencil-alt-solid.svg" alt="Pencil" class="Lapiz_editar">
                         </div>
                         <div class="form-inline my-2 my-lg-0">
                             <p>
