@@ -98,6 +98,7 @@ function dibujarPoligono(vertices, color, parcela) {
         var selector = document
             .getElementById("parcelas")
             .childNodes;
+        encuadrarMapa(this);
 
         selector.forEach(element => {
             if (element.firstChild.value == parcela) {
@@ -111,3 +112,22 @@ function dibujarPoligono(vertices, color, parcela) {
 
     poligonos.push(poligono)
 }
+
+
+function encuadrarMapa(poligono) {
+    var norte, sur, este, oeste;
+    console.log(poligono.Ae.bounds);
+    var p = poligono.Ae.bounds;
+        
+        map.fitBounds({
+            east: p.ba,
+            north: p.$,
+            south: p.V,
+            west: p.X
+        });
+
+}
+
+
+    
+
