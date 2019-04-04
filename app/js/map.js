@@ -1,32 +1,55 @@
 var map;
 var puntos = [];
-var parcelas = [];
+var poligonos = [];
+var idPoligonos = []
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {
-      lat: 38.99414,
-      lng: -0.1536891
-    },
-    zoom: 13,
-    mapTypeId: google.maps.MapTypeId.HYBRID
-  });
+    map = new google
+        .maps
+        .Map(document.getElementById('map'), {
+            center: {
+                lat: 38.99414,
+                lng: -0.1536891
+            },
+            zoom: 13,
+            mapTypeId: google.maps.MapTypeId.HYBRID
+        });
 }
 
+function ponerPunto(posicion, contenido, id) {
+        var marca = new google
+            .maps
+            .Marker({
+                position: posicion,
+                map: map,
+                id: id,
+                animation: google.maps.Animation.DROP,
+                clickable: true});
 
-function ponerPuntos(puntos) {
-  var limitesMapa = map.getBounds();
-
-  for (var i = 0; i <= puntos.length - 1; i++) {
-    var marca = new google.maps.Marker({
-      position: puntos[i],
-      map: map
-    });
-  }
-  map.fitBounds(limitesMapa);
+                marca.info = new google.maps.InfoWindow({
+                  content: contenido
+                });
+                
+        google
+            .maps
+            .event
+            .addListener(marca,'click', function () {
+                var marker_map = this.getMap();
+                this.info.open(marker_map, this);
+            });
+        puntos.push(marca)
 }
 
 function vaciarMapa() {
+    poligonos.forEach(poligono => {
+        poligono.setMap(null)
+    });
+
+    puntos.forEach(punto => {
+        punto.setMap(null)
+    })
+
+    /*
   map = new google.maps.Map(document.getElementById('map'), {
     center: {
       lat: 38.99414,
@@ -37,27 +60,63 @@ function vaciarMapa() {
   });
   parcelas = []
   puntos = []
+  */
 }
 
-var poligonos = []
+function mostrarOcultarPoligono(parcela) {
+    poligonos.forEach(poligono => {
+        if (poligono.id == parcela) {
+            //poligono.setMap(null);
+            if (poligono.getMap() == null) {
+                poligono.setMap(map);
+            } else {
+                poligono.setMap(null);
+            }
+        }
+    });
+    puntos.forEach(punto => {
+        if (punto.id == parcela) {
+            //poligono.setMap(null);
+            if (punto.getMap() == null) {
+                punto.setMap(map);
+            } else {
+                punto.setMap(null);
+            }
+        }
+    })
+}
 
-function dibujarPoligono(vertices, parcela) {
-  var poligono = new google.maps.Polygon({
-    paths: vertices,
-    map: map,
-    strokeColor: '#FF0000',
-    strokeOpacity: 0.8,
-    strokeWeight: 2,
-    fillColor: '#FF0000',
-    fillOpacity: 0.35,
-    editable: true
-  });
+function dibujarPoligono(vertices, color, parcela) {
 
+    var poligono = new google
+        .maps
+        .Polygon({
+            paths: vertices,
+            map: map,
+            strokeColor: color,
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: color,
+            fillOpacity: 0.35,
+            editable: false,
+            id: parcela
+        });
 
+    poligono.addListener('mouseup', function () {
+        vaciarMapa();
+        var selector = document
+            .getElementById("parcelas")
+            .childNodes;
 
-  poligono.addListener('mouseup', function() {
-    parcelaChange(parcela);
-  })
+        selector.forEach(element => {
+            if (element.firstChild.value == parcela) {
+                element.firstChild.checked = true;
+            } else {
+                element.firstChild.checked = false;
+            }
+        });
+        mostrarOcultarPoligono(parcela);
+    })
 
-  poligonos.push(poligono)
+    poligonos.push(poligono)
 }

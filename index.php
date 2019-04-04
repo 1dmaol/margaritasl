@@ -197,57 +197,6 @@
                 }
             }
 
-            function comportamientoServicios(elemento, img) {
-                if (elemento.style.display == "block") {
-                    elemento.style.display = "none";
-                    img.style.transform = "rotate(0deg)";
-                } else {
-                    elemento.style.display = "block";
-                    img.style.transform = "rotate(180deg)";
-                }
-            }
-
-            function descripcion(numero) {
-                var elemento,
-                    img;
-                if (window.innerWidth <= 934) {
-                    switch (numero) {
-                        case 1:
-                            elemento = document.getElementById("nube");
-                            img = document.getElementById("desplegable1");
-                            comportamientoServicios(elemento, img);
-                            break;
-                        case 2:
-                            elemento = document.getElementById("grafica");
-                            img = document.getElementById("desplegable2");
-                            comportamientoServicios(elemento, img);
-                            break;
-                        case 3:
-                            elemento = document.getElementById("usuario");
-                            img = document.getElementById("desplegable3");
-                            comportamientoServicios(elemento, img);
-                            break;
-                        case 4:
-                            elemento = document.getElementById("multiplataforma");
-                            img = document.getElementById("desplegable4");
-                            comportamientoServicios(elemento, img);
-                            break;
-                        case 5:
-                            elemento = document.getElementById("informacion");
-                            img = document.getElementById("desplegable5");
-                            comportamientoServicios(elemento, img);
-                            break;
-                        case 6:
-                            elemento = document.getElementById("funcionalidades");
-                            img = document.getElementById("desplegable6");
-                            comportamientoServicios(elemento, img);
-                            break;
-                        default:
-
-                    }
-                }
-            }
-
             // When the user clicks on the button, scroll to the top of the document
             function topFunction() {
                 document.body.scrollTop = 0; // For Safari
