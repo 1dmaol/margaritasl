@@ -3,6 +3,7 @@ var parcelas = [];
 var vertices = [];
 var sondas = [];
 var mediciones = [];
+var porcentajes = [];
 var selector = [];
 var all = true;
 
@@ -57,7 +58,20 @@ function getMediciones(id){
     )
     .then(function (json) {
         mediciones = json.datos;
+        pasarAPorcentaje();
     })
+}
+
+function pasarAPorcentaje(){
+    let temperatura, humedad, salinidad, iluminacion, presion;
+    mediciones.forEach(medicion => {
+        temperatura = 100*0/(0-40)-medicion.temperatura*100/(0-40);
+        humedad = 100*0/(0-100)-medicion.humedad*100/(0-100);
+        salinidad = 100*0/(0-200)-medicion.salinidad*100/(0-200);
+        iluminacion = 100*0/(2000-10000)-medicion.iluminacion*100/(2000-10000);
+        presion = 100*0/(0-10000)-medicion.presion*100/(0-10000);
+        porcentajes.push({"nombre":medicion.nombre, "id":medicion.id, "tiempo":medicion.tiempo, "temperatura":temperatura, "humedad":humedad, "salinidad":salinidad, "iluminacion":iluminacion, "presion":presion});
+    });
 }
 
 function buscarParcela() {
@@ -68,7 +82,9 @@ function buscarParcela() {
 }
 
 function crearListaParcelas(json) {
-    console.log(json)
+    
+    var button = document.getElementById("todasParcelas");
+    button.value = "Seleccionar todas las parcelas";
     var element = document.getElementById("parcelas");
     for (parcela of json) {
         var input = document.createElement("input");
@@ -148,16 +164,21 @@ function dibujarParcelas() {
 function mostrarPosicionesMapa(id) {
     sondas.forEach(sonda => {
         if (sonda.id_parcela == id) {
-            var medidas = mediciones.find(x => x.id === sonda.id);
-            console.log(medidas)
+            var parcela = parcelas.find(x => x.id === sonda.id_parcela);
+            console.log(parcela.nombre)
             var contenido = '<div id="content">' + '<h4>Sensor ' + sonda.id + ' </h4>' +
                 '<div id="bodyContent">' +
-                '<p><b>T: </b> ' +  + 'os sensores de la parcela ' + id + '</p>' +
-                '<p><a href="javascript:llenarDiagrama(' + sonda.id + ')">' +
+                '<p><b>T: </b> los sensores de la parcela ' + sonda.id_parcela + '</p>' +
+                '<p><a href="javascript:llenarGrafica(\'' + sonda.id + '\', \'' + parcela.nombre + '\')">' +
                 'Comparación</a> ' +
                 '</div>' +
                 '</div>';
             ponerPunto(new google.maps.LatLng(parseFloat(sonda.lat), parseFloat(sonda.lng)), contenido, id)
         }
     });
+}
+
+function mostrarGrafica(){
+    var element = document.getElementById("grafica");
+    if(element.style.display == "") element.style.display = "flex";
 }

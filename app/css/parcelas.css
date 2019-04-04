@@ -6,10 +6,6 @@ html {
     padding: 0;
 }
 
-#editarPerfil:hover {
-    background: yellow;
-}
-
 #parcelas {
     overflow: hidden;
     overflow-y: scroll;
@@ -47,11 +43,24 @@ header {
     padding: 8px;
     color: white;
     font-family: "Montserrat";
+    transition: all .5s ease;
 }
 
+
+.boton:hover,
+.boton:focus,
+.boton:active,
+.boton:active:focus {
+    background-color:lightcoral;
+}
+
+
 .grafica {
-    display: flex;
+    display: none;
     align-items: center;
+    align-self: center;
+    align-content: center;
+    flex-direction: column;
     flex: 1 1 80%;
 }
 

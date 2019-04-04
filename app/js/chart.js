@@ -13,25 +13,8 @@ var myChart = new Chart(ctx, {
                     max: 100
                 }
             }]
-        },
-        animation: {
-            duration: 1,
-            onComplete: function () {
-                var chartInstance = this.chart,
-                    ctx = chartInstance.ctx;
-                ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'bottom';
-
-                this.data.datasets.forEach(function (dataset, i) {
-                    var meta = chartInstance.controller.getDatasetMeta(i);
-                    meta.data.forEach(function (bar, index) {
-                        var data = dataset.data[index];
-                        ctx.fillText(data, bar._model.x, bar._model.y - 5);
-                    });
-                });
-            }
         }
+
 
     }
 });
@@ -43,30 +26,45 @@ function random_rgba() {
     return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ',';
 }
 
-function llenarDiagrama(id) {
+var datos = [];
+
+function llenarGrafica(id_sonda, nombre_parcela) {
+    mostrarGrafica();
     var lista = []
-    mediciones.forEach(medicion => {
-        console.log(medicion)
-        if (medicion.id == id) lista.push(medicion.temperatura, medicion.humedad, medicion.salinidad, medicion.iluminacion, medicion.presion)
+    var identificador;
+    porcentajes.forEach(porcentaje => {
+        if (porcentaje.id == id_sonda && porcentaje.nombre == nombre_parcela) {
+            lista.push(porcentaje.temperatura, porcentaje.humedad, porcentaje.salinidad, porcentaje.iluminacion, porcentaje.presion)
+            nombre = porcentaje.nombre;
+            console.log("Sonda : ", id_sonda, " - Nombre: ", nombre);
+        }
     });
-    console.log(lista)
-    var colorAl = random_rgba();
-    var backgroundAl = colorAl + 0.5 + ')';
-    var borderAl = colorAl + 1 + ')';
-
+    identificador = "Sonda " + id_sonda + " (" + nombre_parcela + ")";
     var myNewDataset = {
-        label: "Sonda (Numero)",
+        label: identificador,
         data: lista,
-        borderWidth: 1,
-        borderColor: borderAl,
-        backgroundColor: backgroundAl
     }
+    if (!datos.includes(identificador)) {
+        var colorAl = random_rgba();
+        var backgroundAl = colorAl + 0.5 + ')';
+        var borderAl = colorAl + 1 + ')';
 
+        myNewDataset.borderWidth = 1;
+        myNewDataset.borderColor = borderAl;
+        myNewDataset.backgroundColor = backgroundAl;
 
-    var labels = ['Temperatura', 'Humedad', 'Salinidad', 'Iluminación', 'Presión'];
-    myChart.options.title.text = "Parcela";
-    myChart.data.labels = labels;
-    myChart.data.datasets.push(myNewDataset)
+        var labels = ['Temperatura', 'Humedad', 'Salinidad', 'Iluminación', 'Presión'];
+        myChart.options.title.text = "Parcela";
+        myChart.data.labels = labels;
+        myChart.data.datasets.push(myNewDataset)
+        myChart.update();
+        datos.push(identificador);
+    }
+}
+
+function vaciarGrafica() {
+    datos = [];
+    myChart.data.labels = [];
+    myChart.data.datasets = [];
     myChart.update();
-
 }

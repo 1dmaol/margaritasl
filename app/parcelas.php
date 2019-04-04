@@ -79,11 +79,13 @@ if(isset($_GET['salir'])){
             <div id="listaParcelas">
                 <div>
                     <input id="buscador" type="text" placeholder="Buscar..." onkeydown="buscarParcela()">
-                    <div id="parcelas"></div>
+                    <button id="todasParcelas" class="btn">Parcelas</button>
+                    <div id="parcelas">
+
+                    </div>
                 </div>
             </div>
             <div id="extra">
-                AQUI VENDRIA EL PLUGIN DE LO QUE SEA GUAY
             </div>
         </div>
 
@@ -93,13 +95,13 @@ if(isset($_GET['salir'])){
         <div id="grafica" class="grafica hidden visuallyhidden">
             <!--Nos permite dibujar en un "lienzo"-->
             <canvas id="myChart"></canvas>
+            <button class="btn btn-primary" onclick="vaciarGrafica()">Vaciar gráfica</button>
         </div>
     </div>
     <script src="js/parcelas.js"></script>
     <script src="js/map.js"></script>
     <script>
         var charged = true;
-
         getVertices(<?php echo $_SESSION['id']; ?>);
         getParcelas(<?php echo $_SESSION['id']; ?>);
         getSondas(<?php echo $_SESSION['id']; ?>);
