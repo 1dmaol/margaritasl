@@ -87,10 +87,10 @@ if(isset($_GET['salir'])){
         <div id="map">
             <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async="async" defer="defer"></script>
         </div>
-            <a href="javascript:esconderGrafica()" class="plegar"><img src="images/angle.svg" alt="plegar"></a>
         <div id="grafica" class="grafica hidden visuallyhidden">
             <!--Nos permite dibujar en un "lienzo"-->
-            <h2>Gráfico de las mediciones</h2>
+            <a href="javascript:borrarGrafica()" id="cerrarGrafica"><img src="images/close.svg" alt="Cerrar"></a>
+            <h1 style="color:rgb(130,0,83)"><strong>Gráfico de las mediciones</strong></h1>
             <canvas id="myChart"></canvas>
             <button class="boton" onclick="vaciarGrafica()">Vaciar gráfica</button>
         </div>

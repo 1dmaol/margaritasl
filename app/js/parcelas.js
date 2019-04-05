@@ -177,16 +177,18 @@ function mostrarPosicionesMapa(id) {
 }
 
 function mostrarGrafica(){
+    if(window.innerWidth <= 600 && window.innerHeight <= 900){
+        document.getElementById("map").style.height = "30vh";
+    }
     var element = document.getElementById("grafica");
     if(element.style.display == "") element.style.display = "flex";
 }
 
-function esconderGrafica(){
-    
+function borrarGrafica(){
+    if(window.innerWidth <= 600 && window.innerHeight <= 900){
+        document.getElementById("map").style.height = "67vh";
+    }
     var element = document.getElementById("grafica");
     if(element.style.display == "flex") element.style.display = "";
-}
-
-function mostrarInfo(){
-    $('.toast').toast('show');
+    vaciarGrafica();
 }
