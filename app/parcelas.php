@@ -89,8 +89,8 @@ if(isset($_GET['salir'])){
         </div>
         <div id="grafica" class="grafica hidden visuallyhidden">
             <!--Nos permite dibujar en un "lienzo"-->
-            <a href="javascript:esconderGrafica()" class="plegar"><img src="images/angle.svg" alt="plegar"></a>
-            <h2>Gráfico de las mediciones</h2>
+            <a href="javascript:borrarGrafica()" id="cerrarGrafica"><img src="images/close.svg" alt="Cerrar"></a>
+            <h1 style="color:rgb(130,0,83)"><srtong>Gráfico de las mediciones</srtong></h1>
             <canvas id="myChart"></canvas>
             <button class="boton" onclick="vaciarGrafica()">Vaciar gráfica</button>
         </div>
