@@ -186,3 +186,7 @@ function esconderGrafica(){
     var element = document.getElementById("grafica");
     if(element.style.display == "flex") element.style.display = "";
 }
+
+function mostrarInfo(){
+    $('.toast').toast('show');
+}

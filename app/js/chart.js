@@ -58,6 +58,8 @@ function llenarGrafica(id_sonda, nombre_parcela) {
         myChart.data.datasets.push(myNewDataset)
         myChart.update();
         datos.push(identificador);
+    }else{
+        alert("Los datos de la sonda ya se muestran en la gráfica.");
     }
 }
 
