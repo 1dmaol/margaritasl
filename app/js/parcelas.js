@@ -85,6 +85,7 @@ function buscarParcela() {
 
 function crearListaParcelas(json) {
     var element = document.getElementById("parcelas");
+    var elementresponsive = document.getElementById("parcelas-responsive")
     for (parcela of json) {
         var input = document.createElement("input");
         var label = document.createElement("label");
@@ -102,7 +103,11 @@ function crearListaParcelas(json) {
         div.appendChild(label);
         div.setAttribute("class", "parcela");
         element.appendChild(div);
-
+        console.log("uno aadido")
+        console.log(element)
+        elementresponsive.appendChild(div);
+        console.log("dos aadido")
+        console.log(elementresponsive)
     }
 }
 

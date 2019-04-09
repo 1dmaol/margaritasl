@@ -163,6 +163,13 @@ header {
     font-size: 18px;
 }
 
+#herramientas {
+    display:block;
+}
+#herramientas-responsive {
+    display:none;
+}
+
 @media(max-width:900px) {
     .contenedor {
         flex-direction: column;
@@ -170,9 +177,35 @@ header {
         padding-right: 0px;
     }
 
+#herramientas {
+    display:none;
+}
+
+#herramientas-responsive {
+    display:block;
+    padding: 1rem;
+}
+
+#navbarSupportedContent ul {
+    border-bottom: 1px solid grey;
+}
+
+.grow {
+    z-index: 98;
+    position: relative;
+    top: 80.5%;
+    margin-bottom: -200px;
+    float:right;
+}
+
+.grow:hover {
+    width: 150px;
+    color: black;
+    background-color: white;
+}
     .contenedor #map {
         order: -1;
-        height: 67vh;
+        height: 80vh;
     }
 
     .contenedor #parcelas {

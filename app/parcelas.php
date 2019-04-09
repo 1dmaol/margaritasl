@@ -88,6 +88,20 @@ if(isset($_GET['salir'])){
     </div>
 
     <div class="contenedor">
+        <div id="herramientas-responsive" class="btn-group dropup">
+        <button type="button" class="boton dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Herramientas
+        </button>
+            <div id="listaParcelas" class="dropdown-menu">
+                <div>
+                    <input id="buscador" type="text" placeholder="Buscar..." onkeydown="buscarParcela()">
+                    <div id="parcelas-responsive"></div>
+                </div>
+            </div>
+            <div id="extra">
+            </div>
+        </div>
+
         <div id="herramientas">
             <div id="listaParcelas">
                 <div>
