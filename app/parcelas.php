@@ -83,7 +83,7 @@ if(isset($_GET['salir'])){
         <button onclick="controlContenedorGrafica()" class="boton" style="background-color:#FFFFFF;">
             <img id="miniatura" src="images/chart.svg" alt="Grafica" height="25px" width="25px">
         </button>
-        <span id="text">Ver gráfica</span> 
+        <span id="text">Mostrar gráfica</span> 
         <p id="qSondas"></p>
     </div>
 
@@ -131,6 +131,9 @@ if(isset($_GET['salir'])){
         </div>
 
     </div>
+            <div class="flecha-bajar text-center" id="bajar"> 
+                <a href="#contenedor-grafica"> <img src="images/down.svg" alt="Bajar" width="30px" height="30px"></a>
+            </div>
     <script src="js/parcelas.js"></script>
     <script src="js/map.js"></script>
     <script>

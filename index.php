@@ -56,7 +56,7 @@
                     <hr>
                     <p>Controla los parametros de tu cultivo.</p>
                 </div>
-                <a class="nextpage scroll" href="#servicios"><img src="images/down.svg" alt="Bajar"></a>
+                <a class="nextpage scroll" href="../#servicios"><img src="images/down.svg" alt="Bajar"></a>
             </div>
         </header>
 
@@ -84,9 +84,9 @@
                     </article>
                 </div>
             </div>
-            <a class="nextpage scroll" href="#contacto"><img src="images/down.svg" alt="Bajar"></a>
+            <a class="nextpage scroll" href="../#contacto"><img src="images/down.svg" alt="Bajar"></a>
         </section>
-        <a class="btn scroll" id="myBtn" href="#navbar">Subir</a>
+        <a class="btn scroll" id="myBtn" href="../#navbar">Subir</a>
         <footer id="contacto">
 
             <h3>¿Tienes alguna duda?

@@ -65,7 +65,7 @@ header {
 }
 
 .grow:hover {
-    width: 150px;
+    width: 170px;
     color: white;
     background-color: rgb(165, 49, 122);
 }
@@ -170,6 +170,10 @@ header {
     display:none;
 }
 
+.flecha-bajar {
+    display:none;
+}
+
 @media(max-width:900px) {
     .contenedor {
         flex-direction: column;
@@ -189,6 +193,32 @@ header {
 #navbarSupportedContent ul {
     border-bottom: 1px solid grey;
 }
+
+.flecha-bajar {
+    display:none;
+}
+
+.flecha-bajar a {
+    display: inline-block;
+    position: fixed;
+    bottom: 5px;
+    color: #fff;
+    font-size: 3rem;
+    animation: flecha-animada 1s ease-in-out infinite;
+}
+
+@keyframes flecha-animada {
+    from{
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(6px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
+
 
 .grow {
     z-index: 98;

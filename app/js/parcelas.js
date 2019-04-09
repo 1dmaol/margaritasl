@@ -83,6 +83,7 @@ function buscarParcela() {
     }, 10);
 }
 
+//ESTO ESTA MUY FEO, SOLUCIONAR ASAP
 function crearListaParcelas(json) {
     var element = document.getElementById("parcelas");
     var elementresponsive = document.getElementById("parcelas-responsive")
@@ -103,11 +104,24 @@ function crearListaParcelas(json) {
         div.appendChild(label);
         div.setAttribute("class", "parcela");
         element.appendChild(div);
-        console.log("uno aadido")
-        console.log(element)
+    }
+    for (parcela of json) {
+        var input = document.createElement("input");
+        var label = document.createElement("label");
+        var div = document.createElement("div");
+        input.setAttribute("type", "checkbox");
+        input.setAttribute("id", "parcela" + parcela.id+ "r");
+        input.setAttribute("onchange", "mostrarParcela(" + parcela.id + ")")
+        input.setAttribute("value", parcela.id);
+        input.setAttribute("checked", true);
+        console.log(input)
+        label.textContent = parcela.nombre;
+        label.setAttribute("class", "form-check-label");
+        label.setAttribute("for", "parcela" + parcela.id + "r");
+        div.appendChild(input);
+        div.appendChild(label);
+        div.setAttribute("class", "parcela");
         elementresponsive.appendChild(div);
-        console.log("dos aadido")
-        console.log(elementresponsive)
     }
 }
 
@@ -205,14 +219,19 @@ function controlContenedorGrafica(){
     var element = document.getElementById("contenedor-grafica");
     var img = document.getElementById("miniatura");
     var text= document.getElementById("text");
+    var flecha= document.getElementById("bajar");
     if (element.style.display != "block") {
         element.style.display = "block";
         img.src = "images/close.svg";
         document.getElementById("qSondas").style.display = "none";
+        text.innerText = "Ocultar grafica";
+        if(window.innerWidth <= 900) flecha.style.display = "block";
     }else{ 
         element.style.display = ""
         img.src = "images/chart.svg";
         document.getElementById("qSondas").style.display = "block";
+        flecha.style.display = "none";
+        text.innerText = "Mostrar grafica"
     }
 }
 
@@ -233,4 +252,15 @@ function borrarGrafica(){
     var element = document.getElementById("nografica");
     element.style.display = "block";
     vaciarGrafica();
+}
+
+window.onscroll = function () {
+    scrollFunction()
+};
+
+function scrollFunction() {
+        document
+            .getElementById("bajar")
+            .style
+            .display = "none";
 }

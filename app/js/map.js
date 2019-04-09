@@ -124,7 +124,7 @@ function encuadrarMapa(poligono) {
         
         map.fitBounds({
             east: p.ba,
-            north: p.$,
+            north: p.aa,
             south: p.V,
             west: p.X
         });
