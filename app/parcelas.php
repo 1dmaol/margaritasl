@@ -50,13 +50,19 @@ if(isset($_GET['salir'])){
                         <a class="nav-link" href="?salir">Cerrar sesión</a>
                     </li>
                 </ul>
-                <a id="editarPerfil" href="verPerfil.php" style="text-decoration:none;color:black;">
-                    <div class="shadow p-3 bg-light rounded" style="height:100px;">
-
-                        <div class="form-inline my-2 my-lg-0" style="float:right;font-size:13px;">
-                            Editar
-                            <img src="images/pencil-alt-solid.svg" alt="editar" class="editar">
-                        </div>
+                <div class="dropdown">
+                    <a class="perfil" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Perfil
+                    </a>
+                    <div class="shadow p-3 bg-light rounded dropdown-menu dropdown-menu-right"
+                        style="height:auto; width: 300px;" aria-labelledby="dropdownMenu1">
+                        <a id="editarPerfil" href="verPerfil.php" style="text-decoration:none;color:black;">
+                            <div class="form-inline my-2 my-lg-0" style="float:right;font-size:13px;">
+                                Editar
+                                <img src="images/pencil-alt-solid.svg" alt="editar" class="editar">
+                            </div>
+                        </a>
                         <div class="form-inline my-2 my-lg-0">
                             <p>
                                 Nombre:
@@ -68,10 +74,19 @@ if(isset($_GET['salir'])){
                                 <?php echo $_SESSION['email']; ?></p>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
         </nav>
     </header>
+
+    <div id="controlPantalla" class="grow" style="text-align:center;">
+        <button onclick="controlContenedorGrafica()" class="boton" style="background-color:#FFFFFF;">
+            <img id="miniatura" src="images/chart.svg" alt="Grafica" height="25px" width="25px">
+        </button>
+        <span id="text">Ver gráfica</span> 
+        <p id="qSondas"></p>
+    </div>
+
     <div class="contenedor">
         <div id="herramientas">
             <div id="listaParcelas">
@@ -81,19 +96,26 @@ if(isset($_GET['salir'])){
                 </div>
             </div>
             <div id="extra">
+
             </div>
         </div>
 
         <div id="map">
             <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async="async" defer="defer"></script>
         </div>
-        <div id="grafica" class="grafica hidden visuallyhidden">
-            <!--Nos permite dibujar en un "lienzo"-->
-            <a href="javascript:borrarGrafica()" id="cerrarGrafica"><img src="images/close.svg" alt="Cerrar"></a>
-            <h1 style="color:rgb(130,0,83)"><strong>Gráfico de las mediciones</strong></h1>
-            <canvas id="myChart"></canvas>
-            <button class="boton" onclick="vaciarGrafica()">Vaciar gráfica</button>
+        <div id="contenedor-grafica">
+            <div id="nografica">
+                <h3 style="color:rgb(130,0,83)">No hay ninguna sonda seleccionada</h3>
+                <p>Para seleccionarla, pulse sobre "Seleccionar sonda" de la sonda disponible.</p>
+            </div>
+            <div id="grafica" class="grafica">
+                <!--Nos permite dibujar en un "lienzo"-->
+                <h3 style="color:rgb(130,0,83)"><strong>Gráfico de las mediciones</strong></h3>
+                <canvas id="myChart"></canvas>
+                <button class="boton" onclick="borrarGrafica()">Vaciar gráfica</button>
+            </div>
         </div>
+
     </div>
     <script src="js/parcelas.js"></script>
     <script src="js/map.js"></script>

@@ -12,7 +12,10 @@ function initMap() {
                 lng: -0.1536891
             },
             zoom: 13,
-            mapTypeId: google.maps.MapTypeId.HYBRID
+            mapTypeId: google.maps.MapTypeId.HYBRID,
+
+  fullscreenControl: false
+
         });
 }
 

@@ -29,7 +29,8 @@ function random_rgba() {
 var datos = [];
 
 function llenarGrafica(id_sonda, nombre_parcela) {
-    mostrarGrafica();
+    aumentarContador();
+    if(document.getElementById("grafica").style.display == "") mostrarGrafica();
     var lista = []
     var identificador;
     porcentajes.forEach(porcentaje => {

@@ -7,6 +7,8 @@ var porcentajes = [];
 var selector = [];
 var all = true;
 
+var qSondas = 0;
+
 function getParcelas(id) {
     fetch("../api/v1.0/parcelas?id=" + id)
         .then(
@@ -165,10 +167,10 @@ function mostrarPosicionesMapa(id) {
             var porcentaje = porcentajes.find(x => x.id === sonda.id && x.nombre === parcela.nombre);
             var contenido = '<div id="content">' + '<h4>Sensor ' + sonda.id + ' </h4>' +
                 '<div id="bodyContent" style="text-align:center;">' +
-                '<p><img src="images/temperature.svg" alt="Temperatura" width="30px" height="30px"></img>' + Math.floor(porcentaje.temperatura) + '%  <img src="images/sun.svg" alt="Iluminacion" width="30px" height="30px"></img>' + Math.floor(porcentaje.iluminacion) + '%  <img src="images/salt.svg" alt="Salinidad" width="30px" height="30px"></img>' + Math.floor(porcentaje.salinidad) + '%  <img src="images/water.svg" alt="Humedad" width="30px" height="30px"></img>' + Math.floor(porcentaje.humedad) + '%  <img src="images/preasure.svg" alt="Presion" width="30px" height="30px"></img>' + Math.floor(porcentaje.presion) + '%  <br></p>' +
+                '<p><img src="images/temperature.svg" alt="Temperatura" width="30px" height="30px"></img>' + Math.floor(porcentaje.temperatura) + '%  | <img src="images/sun.svg" alt="Iluminacion" width="30px" height="30px"></img>' + Math.floor(porcentaje.iluminacion) + '%  | <img src="images/salt.svg" alt="Salinidad" width="30px" height="30px"></img>' + Math.floor(porcentaje.salinidad) + '%  | <img src="images/water.svg" alt="Humedad" width="30px" height="30px"></img>' + Math.floor(porcentaje.humedad) + '%  | <img src="images/preasure.svg" alt="Presion" width="30px" height="30px"></img>' + Math.floor(porcentaje.presion) + '%  <br></p>' +
                 '<p> Ultima medida: '+ porcentaje.tiempo +'<br></p>' +
                 '<p><a href="javascript:llenarGrafica(\'' + sonda.id + '\', \'' + parcela.nombre + '\')">' +
-                '<button class="boton">Comparar</button></a> ' +
+                '<button class="boton">Seleccionar sonda</button></a> ' +
                 '</div>' +
                 '</div>';
             ponerPunto(new google.maps.LatLng(parseFloat(sonda.lat), parseFloat(sonda.lng)), contenido, id)
@@ -176,19 +178,54 @@ function mostrarPosicionesMapa(id) {
     });
 }
 
-function mostrarGrafica(){
-    if(window.innerWidth <= 600 && window.innerHeight <= 900){
-        document.getElementById("map").style.height = "30vh";
+function aumentarContador(){
+    qSondas++;
+    var element = document.getElementById("qSondas");
+    element.style.display = "block";
+    element.innerText = qSondas;
+}
+
+function reiniciarContador() {
+    qSondas=0;
+    var element = document.getElementById("qSondas");
+    element.style.display = "none";
+    element.innerText = qSondas;
+}
+
+function controlContenedorGrafica(){
+    
+    //if(window.innerWidth <= 600 && window.innerHeight <= 900){
+    //    document.getElementById("map").style.height = "30vh";
+    //}
+    var element = document.getElementById("contenedor-grafica");
+    var img = document.getElementById("miniatura");
+    var text= document.getElementById("text");
+    if (element.style.display != "block") {
+        element.style.display = "block";
+        img.src = "images/close.svg";
+        document.getElementById("qSondas").style.display = "none";
+    }else{ 
+        element.style.display = ""
+        img.src = "images/chart.svg";
+        document.getElementById("qSondas").style.display = "block";
     }
+}
+
+function mostrarGrafica(){
     var element = document.getElementById("grafica");
-    if(element.style.display == "") element.style.display = "flex";
+    element.style.display = "flex";
+    var element = document.getElementById("nografica");
+    element.style.display = "none";
 }
 
 function borrarGrafica(){
-    if(window.innerWidth <= 600 && window.innerHeight <= 900){
-        document.getElementById("map").style.height = "67vh";
-    }
+    //if(window.innerWidth <= 600 && window.innerHeight <= 900){
+    //    document.getElementById("map").style.height = "67vh";
+    //}
+    reiniciarContador();
     var element = document.getElementById("grafica");
-    if(element.style.display == "flex") element.style.display = "";
+    element.style.display = "";
+    var element = document.getElementById("nografica");
+    element.style.display = "block";
     vaciarGrafica();
 }
