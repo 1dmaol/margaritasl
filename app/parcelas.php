@@ -78,7 +78,7 @@ if(isset($_GET['salir'])){
             </div>
         </nav>
     </header>
-
+    <!--
     <div id="controlPantalla" class="grow" style="text-align:center;">
         <button onclick="controlContenedorGrafica()" class="boton" style="background-color:#FFFFFF;">
             <img id="miniatura" src="images/chart.svg" alt="Grafica" height="25px" width="25px">
@@ -86,12 +86,13 @@ if(isset($_GET['salir'])){
         <span id="text">Mostrar gráfica</span> 
         <p id="qSondas"></p>
     </div>
-
+-->
     <div class="contenedor">
-        <div id="herramientas-responsive" class="btn-group dropup">
-        <button type="button" class="boton dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Herramientas
-        </button>
+        <div id="herramientas-responsive" class="btn-group dropdown">
+            <button type="button" class="boton dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                Lista de parcelas
+            </button>
             <div id="listaParcelas" class="dropdown-menu">
                 <div>
                     <input id="buscador" type="text" placeholder="Buscar..." onkeydown="buscarParcela()">
@@ -109,6 +110,13 @@ if(isset($_GET['salir'])){
                     <div id="parcelas"></div>
                 </div>
             </div>
+
+            <div id="listaSondas">
+                <div>
+                    <p>Sondas: </p>
+                    <div id="sondas"></div>
+                </div>
+            </div>
             <div id="extra">
 
             </div>
@@ -117,23 +125,56 @@ if(isset($_GET['salir'])){
         <div id="map">
             <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async="async" defer="defer"></script>
         </div>
-        <div id="contenedor-grafica">
+
+        <div id="contenedor-grafica-responsive">
+                <!-- PAGINATION
+                <ul class="pagination">
+                    <li class="page-item active">
+                    <a class="page-link" href="#!">Gráfico <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#!">Tiempo</a></li>
+                </ul>
+                -->
+                <nav class="mt-3 mx-auto" style="width: 19vh;">
+                <ul class="nav nav-pills nav-fill" id="navSonda"><li>
+                        <a class="boton" href="#" onclick="cambiarVisualizacion(this);">Gráfico</a>
+                    </li><li>
+                        <a class="botonUnset" href="#" onclick="cambiarVisualizacion(this);">Tiempo</a>
+                    </li></ul>
+                </nav>
+                <p></p>
+            <div id="nografica-responsive">
+                <h5 style="color:rgb(130,0,83)">No hay ninguna sonda seleccionada</h5>
+                <p>Para seleccionarla, pulse sobre "Seleccionar sonda" de la sonda disponible.</p>
+            </div>
+            <div id="grafica-responsive" class="grafica">
+                <!--Nos permite dibujar en un "lienzo"-->
+                <h5 style="color:rgb(130,0,83)"><strong>Gráfico de las mediciones</strong></h5>
+                <canvas id="myChartR"></canvas>
+                <button class="boton" onclick="borrarGrafica()">Vaciar gráfica</button>
+            </div>
+
+            <div id="contenedor-tiempo">
+                <h5>No tiempo</h5>
+            </div>
+        </div>
+
+        <div id="contenedor-grafica" class="collapse">
             <div id="nografica">
-                <h3 style="color:rgb(130,0,83)">No hay ninguna sonda seleccionada</h3>
+                <h5 style="color:rgb(130,0,83)">No hay ninguna sonda seleccionada</h5>
                 <p>Para seleccionarla, pulse sobre "Seleccionar sonda" de la sonda disponible.</p>
             </div>
             <div id="grafica" class="grafica">
                 <!--Nos permite dibujar en un "lienzo"-->
-                <h3 style="color:rgb(130,0,83)"><strong>Gráfico de las mediciones</strong></h3>
+                <h5 style="color:rgb(130,0,83)"><strong>Gráfico de las mediciones</strong></h5>
                 <canvas id="myChart"></canvas>
                 <button class="boton" onclick="borrarGrafica()">Vaciar gráfica</button>
             </div>
         </div>
-
     </div>
-            <div class="flecha-bajar text-center" id="bajar"> 
-                <a href="#contenedor-grafica"> <img src="images/down.svg" alt="Bajar" width="30px" height="30px"></a>
-            </div>
+    <div class="flecha-bajar text-center" id="bajar">
+        <a href="#contenedor-grafica"> <img src="images/down.svg" alt="Bajar" width="30px" height="30px"></a>
+    </div>
     <script src="js/parcelas.js"></script>
     <script src="js/map.js"></script>
     <script>

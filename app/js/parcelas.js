@@ -190,6 +190,7 @@ function mostrarPosicionesMapa(id) {
                 '<p> Ultima medida: '+ porcentaje.tiempo +'<br></p>' +
                 '<p><a href="javascript:llenarGrafica(\'' + sonda.id + '\', \'' + parcela.nombre + '\')">' +
                 '<button class="boton">Seleccionar sonda</button></a> ' +
+                '<button id="graficaBoton" class="boton" data-toggle="collapse" data-target="#contenedor-grafica" aria-expanded="false" aria-controls="contenedor-grafica"><img id="miniatura" src="images/chart.svg" alt="Grafica" height="25px" width="25px"> Mostrar gráfica </button>' +
                 '</div>' +
                 '</div>';
             ponerPunto(new google.maps.LatLng(parseFloat(sonda.lat), parseFloat(sonda.lng)), contenido, id)
@@ -197,18 +198,42 @@ function mostrarPosicionesMapa(id) {
     });
 }
 
-function aumentarContador(){
+function aumentarContador(id_sonda, nombre_parcela){
     qSondas++;
+
+    var element = document.getElementById("sondas");
+    var input = document.createElement("input");
+    var label = document.createElement("label");
+    var div = document.createElement("div");
+    input.setAttribute("type", "checkbox");
+    input.setAttribute("id", "sonda_" + id_sonda);
+//    input.setAttribute("onchange", "mostrarParcela(" + parcela.id + ")")
+    input.setAttribute("value", id_sonda);
+    input.setAttribute("checked", true);
+    console.log(input)
+    label.textContent = nombre_parcela + ", sonda: " + id_sonda;
+    label.setAttribute("class", "form-check-label");
+    label.setAttribute("for", "sonda_" + id_sonda);
+    div.appendChild(input);
+    div.appendChild(label);
+    div.setAttribute("class", "sonda");
+    element.appendChild(div);
+    /*
     var element = document.getElementById("qSondas");
     element.style.display = "block";
     element.innerText = qSondas;
+    */
 }
 
 function reiniciarContador() {
     qSondas=0;
+    var element = document.getElementById("sondas");
+    element.innerHTML="";
+    /*
     var element = document.getElementById("qSondas");
     element.style.display = "none";
     element.innerText = qSondas;
+    */
 }
 
 function controlContenedorGrafica(){
@@ -235,10 +260,27 @@ function controlContenedorGrafica(){
     }
 }
 
-function mostrarGrafica(){
-    var element = document.getElementById("grafica");
+function cambiarVisualizacion(eleccion){
+    for(var element of document.getElementById("navSonda").childNodes){
+        element.getElementsByTagName("a")[0].className = "botonUnset"
+        };
+    eleccion.setAttribute("class", "boton");
+    if(eleccion.innerHTML == "Tiempo"){
+        document.getElementById("grafica-responsive").style.display = "none";
+        document.getElementById("contenedor-tiempo").style.display = "flex";
+    }else{
+        document.getElementById("grafica-responsive").style.display = "flex";
+        document.getElementById("contenedor-tiempo").style.display = "none";
+    }
+}
+
+function mostrarGrafica(extra){
+    document.getElementById("map").style.flex = "1 1 50vh";    
+    document.getElementById("contenedor-grafica-responsive").style.display = "block";
+
+    var element = document.getElementById("grafica" + extra);
     element.style.display = "flex";
-    var element = document.getElementById("nografica");
+    var element = document.getElementById("nografica" + extra);
     element.style.display = "none";
 }
 

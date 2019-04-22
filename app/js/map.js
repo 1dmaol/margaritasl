@@ -14,7 +14,7 @@ function initMap() {
             zoom: 13,
             mapTypeId: google.maps.MapTypeId.HYBRID,
 
-  fullscreenControl: false
+            fullscreenControl: false
 
         });
 }
@@ -22,29 +22,30 @@ function initMap() {
 var infoW = null;
 
 function ponerPunto(posicion, contenido, id) {
-        var marca = new google
-            .maps
-            .Marker({
-                position: posicion,
-                map: map,
-                id: id,
-                animation: google.maps.Animation.DROP,
-                clickable: true});
+    var marca = new google
+        .maps
+        .Marker({
+            position: posicion,
+            map: map,
+            id: id,
+            animation: google.maps.Animation.DROP,
+            clickable: true
+        });
 
-                marca.info = new google.maps.InfoWindow({
-                  content: contenido
-                });
-                
-        google
-            .maps
-            .event
-            .addListener(marca,'click', function () {
-                if (infoW != null) infoW.close();
-                var marker_map = this.getMap();
-                this.info.open(marker_map, this);
-                infoW = this.info;
-            });
-        puntos.push(marca)
+    marca.info = new google.maps.InfoWindow({
+        content: contenido
+    });
+
+    google
+        .maps
+        .event
+        .addListener(marca, 'click', function () {
+            if (infoW != null) infoW.close();
+            var marker_map = this.getMap();
+            this.info.open(marker_map, this);
+            infoW = this.info;
+        });
+    puntos.push(marca)
 }
 
 function vaciarMapa() {
@@ -97,40 +98,54 @@ function dibujarPoligono(vertices, color, parcela) {
         });
 
     poligono.addListener('mouseup', function () {
+        try {
+
+            encuadrarMapa(this);
+
         vaciarMapa();
         var selector = document
             .getElementById("parcelas")
             .childNodes;
-        encuadrarMapa(this);
+            selector.forEach(element => {
+                if (element.firstChild.value == parcela) {
+                    element.firstChild.checked = true;
+                } else {
+                    element.firstChild.checked = false;
+                }
+            });
+            mostrarOcultarPoligono(parcela);
 
-        selector.forEach(element => {
-            if (element.firstChild.value == parcela) {
-                element.firstChild.checked = true;
-            } else {
-                element.firstChild.checked = false;
-            }
-        });
-        mostrarOcultarPoligono(parcela);
+        } catch (error) {
+            alert("Error: ", error)
+        }
     })
 
     poligonos.push(poligono)
 }
 
+ function getBounds(polygon) {
+    var paths = polygon.getPaths();
+    var bounds = new google.maps.LatLngBounds();
+    paths.forEach(function(path) {
+        var ar = path.getArray();
+        for(var i = 0, l = ar.length;i < l; i++) {
+            bounds.extend(ar[i]);
+        }
+    });
+    return bounds;
+}
 
 function encuadrarMapa(poligono) {
     var norte, sur, este, oeste;
-    console.log(poligono.Ae.bounds);
-    var p = poligono.Ae.bounds;
-        
-        map.fitBounds({
-            east: p.ba,
-            north: p.aa,
-            south: p.V,
-            west: p.X
-        });
+    console.log(poligono);
+    var p = getBounds(poligono);
+
+    console.log(p);
+    map.fitBounds({
+        east: p.ia.l,
+        north: p.na.j,
+        south: p.na.l,
+        west: p.ia.j
+    });
 
 }
-
-
-    
-
