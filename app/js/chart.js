@@ -54,6 +54,10 @@ function llenarGrafica(id_sonda, nombre_parcela) {
     else {
         if(document.getElementById("grafica-responsive").style.display == "") mostrarGrafica(extra);
     }
+
+    document.getElementById("contenedor-tiempo").style.visibility = "visible";
+
+
     var lista = []
     var identificador;
     porcentajes.forEach(porcentaje => {
@@ -62,6 +66,14 @@ function llenarGrafica(id_sonda, nombre_parcela) {
             nombre = porcentaje.nombre;
         }
     });
+    sondas.forEach(sonda => {
+        if (sonda.id == id_sonda){
+            latitud = sonda.lat;
+            longitud = sonda.lng;
+        }
+    });
+    appLocalizacion.cargaDatos();
+    appTiempoActual.cargaDatos();
     identificador = "Sonda " + id_sonda + " (" + nombre_parcela + ")";
     var myNewDataset = {
         label: identificador,

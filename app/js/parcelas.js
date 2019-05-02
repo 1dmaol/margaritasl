@@ -304,7 +304,6 @@ function cambiarVisualizacion(eleccion){
 
 
 function mostrarGrafica(extra){
-    console.log(extra);
     var element = document.getElementById("grafica" + extra);
     element.style.display = "flex";
     var element = document.getElementById("nografica" + extra);

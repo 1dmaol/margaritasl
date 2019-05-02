@@ -14,7 +14,8 @@ function initMap() {
             zoom: 13,
             mapTypeId: google.maps.MapTypeId.HYBRID,
 
-            fullscreenControl: false
+            fullscreenControl: false,
+            zoomControl: false
 
         });
 }

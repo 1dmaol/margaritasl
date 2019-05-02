@@ -88,7 +88,7 @@ if(isset($_GET['salir'])){
     </div>
 -->
     <div class="contenedor">
-        <div id="herramientas-responsive" class="d-flex justify-content-between">
+        <div id="herramientas-responsive">
 
             <div id="listaParcelas-responsive" class="btn-group dropdown">
                 <button type="button" class="boton dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -104,12 +104,19 @@ if(isset($_GET['salir'])){
             </div>
 
                 <div id="contenedor-tiempo">
-                    <h5>No tiempo</h5>
+                    <button class="boton" id="js_w_temp"type="button" data-toggle="collapse" data-target="#prox-tiempo"
+     aria-expanded="false" aria-controls="prox-tiempo"></button>
+                    <div id="prox-tiempo" class="collapse">
+                        <div class="dias" id="js_w_mmDia1"></div>
+                        <div class="dias" id="js_w_mmDia2"></div>
+                        <div class="dias" id="js_w_mmDia3"></div>
+                    </div>
                 </div>
+<!--
                 <div>
                     <button class="boton">Notas</button>
                 </div>
-
+-->
         </div>
 
         <div id="herramientas">
@@ -132,7 +139,7 @@ if(isset($_GET['salir'])){
                     <h5>No tiempo</h5>
                 </div>
                 <div id="contenedor-notas">
-                    <button class="boton">Notas</button>
+                    <!--<button class="boton">Notas</button>-->
                 </div>
 
             </div>
@@ -158,12 +165,12 @@ if(isset($_GET['salir'])){
     </div>
     <div class="position-bottom">
     <button class="boton" type="button" data-toggle="collapse" data-target="#contenedor-grafica-responsive"
-    onclick="function(){document.getElementById('flecha').style.transform = 'rotate(90deg)';}" aria-expanded="false" aria-controls="contenedor-grafica-responsive">
+     aria-expanded="false" aria-controls="contenedor-grafica-responsive">
         <img id="flecha" src="images/down.svg" alt="Subir" width="15px" height="15px" style="transform: rotate(180deg);">
         Gráfica
     </button>
     </div>
-    <div id="contenedor-grafica-responsive" class="panel panel-default panel-collapse collapse">
+    <div id="contenedor-grafica-responsive" class="collapse">
 
         <!-- PAGINATION
                 <ul class="pagination">
@@ -211,6 +218,7 @@ if(isset($_GET['salir'])){
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/chart.js"></script>
+    <script src="js/tiempo.js"></script>
 </body>
 
 </html>
