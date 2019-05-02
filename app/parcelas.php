@@ -88,19 +88,28 @@ if(isset($_GET['salir'])){
     </div>
 -->
     <div class="contenedor">
-        <div id="herramientas-responsive" class="btn-group dropdown">
-            <button type="button" class="boton dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                Lista de parcelas
-            </button>
-            <div id="listaParcelas" class="dropdown-menu">
-                <div>
-                    <input id="buscador" type="text" placeholder="Buscar..." onkeydown="buscarParcela()">
-                    <div id="parcelas-responsive"></div>
+        <div id="herramientas-responsive" class="d-flex justify-content-between">
+
+            <div id="listaParcelas-responsive" class="btn-group dropdown">
+                <button type="button" class="boton dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Lista de parcelas
+                </button>
+                <div id="listaParcelas" class="dropdown-menu">
+                    <div>
+                        <input id="buscador" type="text" placeholder="Buscar..." onkeydown="buscarParcela()">
+                        <div id="parcelas-responsive"></div>
+                    </div>
                 </div>
             </div>
-            <div id="extra">
-            </div>
+
+                <div id="contenedor-tiempo">
+                    <h5>No tiempo</h5>
+                </div>
+                <div>
+                    <button class="boton">Notas</button>
+                </div>
+
         </div>
 
         <div id="herramientas">
@@ -119,22 +128,51 @@ if(isset($_GET['salir'])){
             </div>
             <div id="extra">
 
+                <div id="contenedor-tiempo">
+                    <h5>No tiempo</h5>
+                </div>
+                <div id="contenedor-notas">
+                    <button class="boton">Notas</button>
+                </div>
+
             </div>
         </div>
-
         <div id="map">
             <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async="async" defer="defer"></script>
         </div>
+            <div id="contenedor-grafica" class="collapse">
+                <div id="nografica">
+                    <h5 style="color:rgb(130,0,83)">No hay ninguna sonda seleccionada</h5>
+                    <p>Para seleccionarla, pulse sobre "Seleccionar sonda" de la sonda disponible.</p>
+                </div>
+                <div id="grafica" class="grafica">
+                    <!--Nos permite dibujar en un "lienzo"-->
+                    <h5 style="color:rgb(130,0,83)"><strong>Gráfico de las mediciones</strong></h5>
+                    <canvas id="myChart"></canvas>
+                    <button class="boton" onclick="borrarGrafica()">Vaciar gráfica</button>
+                </div>
+            </div>
+    </div>
+    <div class="flecha-bajar text-center" id="bajar">
+        <a href="#contenedor-grafica"> <img src="images/down.svg" alt="Bajar" width="30px" height="30px"></a>
+    </div>
+    <div class="position-bottom">
+    <button class="boton" type="button" data-toggle="collapse" data-target="#contenedor-grafica-responsive"
+    onclick="function(){document.getElementById('flecha').style.transform = 'rotate(90deg)';}" aria-expanded="false" aria-controls="contenedor-grafica-responsive">
+        <img id="flecha" src="images/down.svg" alt="Subir" width="15px" height="15px" style="transform: rotate(180deg);">
+        Gráfica
+    </button>
+    </div>
+    <div id="contenedor-grafica-responsive" class="panel panel-default panel-collapse collapse">
 
-        <div id="contenedor-grafica-responsive">
-                <!-- PAGINATION
+        <!-- PAGINATION
                 <ul class="pagination">
                     <li class="page-item active">
                     <a class="page-link" href="#!">Gráfico <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="page-item"><a class="page-link" href="#!">Tiempo</a></li>
                 </ul>
-                -->
+                --
                 <nav class="mt-3 mx-auto" style="width: 19vh;">
                 <ul class="nav nav-pills nav-fill" id="navSonda"><li>
                         <a class="boton" href="#" onclick="cambiarVisualizacion(this);">Gráfico</a>
@@ -143,37 +181,17 @@ if(isset($_GET['salir'])){
                     </li></ul>
                 </nav>
                 <p></p>
-            <div id="nografica-responsive">
-                <h5 style="color:rgb(130,0,83)">No hay ninguna sonda seleccionada</h5>
-                <p>Para seleccionarla, pulse sobre "Seleccionar sonda" de la sonda disponible.</p>
-            </div>
-            <div id="grafica-responsive" class="grafica">
-                <!--Nos permite dibujar en un "lienzo"-->
-                <h5 style="color:rgb(130,0,83)"><strong>Gráfico de las mediciones</strong></h5>
-                <canvas id="myChartR"></canvas>
-                <button class="boton" onclick="borrarGrafica()">Vaciar gráfica</button>
-            </div>
-
-            <div id="contenedor-tiempo">
-                <h5>No tiempo</h5>
-            </div>
+                -->
+        <div id="nografica-responsive">
+            <h5 style="color:rgb(130,0,83)">No hay ninguna sonda seleccionada</h5>
+            <p>Para seleccionarla, pulse sobre "Seleccionar sonda" de la sonda disponible.</p>
         </div>
-
-        <div id="contenedor-grafica" class="collapse">
-            <div id="nografica">
-                <h5 style="color:rgb(130,0,83)">No hay ninguna sonda seleccionada</h5>
-                <p>Para seleccionarla, pulse sobre "Seleccionar sonda" de la sonda disponible.</p>
-            </div>
-            <div id="grafica" class="grafica">
-                <!--Nos permite dibujar en un "lienzo"-->
-                <h5 style="color:rgb(130,0,83)"><strong>Gráfico de las mediciones</strong></h5>
-                <canvas id="myChart"></canvas>
-                <button class="boton" onclick="borrarGrafica()">Vaciar gráfica</button>
-            </div>
+        <div id="grafica-responsive" class="grafica">
+            <!--Nos permite dibujar en un "lienzo"-->
+            <h5 style="color:rgb(130,0,83)"><strong>Gráfico de las mediciones</strong></h5>
+            <canvas id="myChartR"></canvas>
+            <button class="boton" onclick="borrarGrafica()">Vaciar gráfica</button>
         </div>
-    </div>
-    <div class="flecha-bajar text-center" id="bajar">
-        <a href="#contenedor-grafica"> <img src="images/down.svg" alt="Bajar" width="30px" height="30px"></a>
     </div>
     <script src="js/parcelas.js"></script>
     <script src="js/map.js"></script>
@@ -187,7 +205,6 @@ if(isset($_GET['salir'])){
             dibujarParcelas();
         })
     </script>
-
     <!-- carga archivos JS -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/chart.min.js"></script>
@@ -197,3 +214,91 @@ if(isset($_GET['salir'])){
 </body>
 
 </html>
+<!-- function mostrar_noMostrar(medicion) {
+    var contador = 0;
+    for (var i = 0; i <= myChart.data.labels.length - 1; i++) {
+        if (myChart.data.labels[i] == medicion) {
+            var posicion = i;
+            contador++;
+        }
+    }
+    if (contador > 0) {
+        myChart.data.labels.splice(posicion, 1);
+        for (let i = 0; i <= myChart.data.datasets.length - 1; i++) {
+            myChart.data.datasets[i].data.splice(posicion, 1);
+        }
+    } else if (contador == 0) {
+        if (medicion == "Temperatura") {
+            myChart.data.labels.splice(0, 0, medicion);
+            for (let i = 0; i <= myChart.data.datasets.length - 1; i++) {
+                myChart.data.datasets[i].data.splice(0, 0, 40 /*Dato*/ );
+            }
+        }
+
+        if (medicion == "Humedad") {
+            if (myChart.data.labels[0] == "Temperatura") {
+                myChart.data.labels.splice(1, 0, medicion);
+                for (let i = 0; i <= myChart.data.datasets.length - 1; i++) {
+                    myChart.data.datasets[i].data.splice(1, 0, 20 /*Dato*/ );
+                }
+            } else {
+                myChart.data.labels.splice(0, 0, medicion);
+                for (let i = 0; i <= myChart.data.datasets.length - 1; i++) {
+                    myChart.data.datasets[i].data.splice(0, 0, 20 /*Dato*/ );
+                }
+            }
+        }
+
+        if (medicion == "Salinidad") {
+            if (myChart.data.labels[0] == "Temperatura" && myChart.data.labels[1] == "Humedad") {
+                myChart.data.labels.splice(2, 0, medicion)
+                for (let i = 0; i <= myChart.data.datasets.length - 1; i++) {
+                    myChart.data.datasets[i].data.splice(2, 0, 80 /*Dato*/ );
+                }
+            } else if (myChart.data.labels[0] == "Temperatura" && myChart.data.labels[1] != "Humedad") {
+                myChart.data.labels.splice(1, 0, medicion)
+                for (let i = 0; i <= myChart.data.datasets.length - 1; i++) {
+                    myChart.data.datasets[i].data.splice(1, 0, 80 /*Dato*/ );
+                }
+            } else if (myChart.data.labels[0] == "Humedad") {
+                myChart.data.labels.splice(1, 0, medicion)
+                for (let i = 0; i <= myChart.data.datasets.length - 1; i++) {
+                    myChart.data.datasets[i].data.splice(1, 0, 80 /*Dato*/ );
+                }
+            } else {
+                myChart.data.labels.splice(0, 0, medicion)
+                for (let i = 0; i <= myChart.data.datasets.length - 1; i++) {
+                    myChart.data.datasets[i].data.splice(0, 0, 80 /*Dato*/ );
+                }
+            }
+
+        }
+
+        if (medicion == "Iluminación") {
+            if (myChart.data.labels[myChart.data.labels.length - 1] == "Presión") {
+                var a = myChart.data.labels.length - 1;
+                myChart.data.labels.splice(a, 0, medicion);
+                for (let i = 0; i <= myChart.data.datasets.length - 1; i++) {
+                    myChart.data.datasets[i].data.splice(a, 0, 60 /*Dato*/ );
+                }
+            } else {
+                myChart.data.labels.push(medicion);
+                for (let i = 0; i <= myChart.data.datasets.length - 1; i++) {
+                    myChart.data.datasets[i].data.push(60 /*Dato*/ );
+                }
+            }
+        }
+
+        if (medicion == "Presión") {
+            myChart.data.labels.push(medicion);
+            for (let i = 0; i <= myChart.data.datasets.length - 1; i++) {
+                myChart.data.datasets[i].data.push(50 /*Dato*/ );
+            }
+            console.log(myChart.data);
+        }
+    }
+
+    //console.log(myChart.data.labels)
+    myChart.update();
+
+} -->

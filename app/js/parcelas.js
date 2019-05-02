@@ -83,7 +83,29 @@ function buscarParcela() {
     }, 10);
 }
 
-//ESTO ESTA MUY FEO, SOLUCIONAR ASAP
+function crearListaParcelas(json) {
+    var element = document.getElementById("parcelas"+extra);
+    for (parcela of json) {
+        var input = document.createElement("input");
+        var label = document.createElement("label");
+        var div = document.createElement("div");
+        input.setAttribute("type", "checkbox");
+        input.setAttribute("id", "parcela" + parcela.id);
+        input.setAttribute("onchange", "mostrarParcela(" + parcela.id + ")")
+        input.setAttribute("value", parcela.id);
+        input.setAttribute("checked", true);
+        console.log(input)
+        label.textContent = parcela.nombre;
+        label.setAttribute("class", "form-check-label");
+        label.setAttribute("for", "parcela" + parcela.id);
+        div.appendChild(input);
+        div.appendChild(label);
+        div.setAttribute("class", "parcela");
+        element.appendChild(div);
+    }
+}
+
+/*ESTO ESTA MUY FEO, SOLUCIONAR ASAP
 function crearListaParcelas(json) {
     var element = document.getElementById("parcelas");
     var elementresponsive = document.getElementById("parcelas-responsive")
@@ -124,7 +146,7 @@ function crearListaParcelas(json) {
         elementresponsive.appendChild(div);
     }
 }
-
+*/
 function filtrarParcelas(filtrado) {
     var selector = document.getElementById("parcelas").childNodes;
     console.log(selector)
@@ -186,7 +208,11 @@ function mostrarPosicionesMapa(id) {
             var porcentaje = porcentajes.find(x => x.id === sonda.id && x.nombre === parcela.nombre);
             var contenido = '<div id="content">' + '<h4>Sensor ' + sonda.id + ' </h4>' +
                 '<div id="bodyContent" style="text-align:center;">' +
-                '<p><img src="images/temperature.svg" alt="Temperatura" width="30px" height="30px"></img>' + Math.floor(porcentaje.temperatura) + '%  | <img src="images/sun.svg" alt="Iluminacion" width="30px" height="30px"></img>' + Math.floor(porcentaje.iluminacion) + '%  | <img src="images/salt.svg" alt="Salinidad" width="30px" height="30px"></img>' + Math.floor(porcentaje.salinidad) + '%  | <img src="images/water.svg" alt="Humedad" width="30px" height="30px"></img>' + Math.floor(porcentaje.humedad) + '%  | <img src="images/preasure.svg" alt="Presion" width="30px" height="30px"></img>' + Math.floor(porcentaje.presion) + '%  <br></p>' +
+                '<p><button class="low-btn"><img src="images/temperature.svg" alt="Temperatura" width="30px" height="30px"></img>' + Math.floor(porcentaje.temperatura) +
+                '%</button> <button class="low-btn"><img src="images/sun.svg" alt="Iluminacion" width="30px" height="30px"></img>' + Math.floor(porcentaje.iluminacion) + 
+                '%</button> <button class="low-btn"><img src="images/salt.svg" alt="Salinidad" width="30px" height="30px"></img>' + Math.floor(porcentaje.salinidad) + 
+                '%</button> <button class="low-btn"><img src="images/water.svg" alt="Humedad" width="30px" height="30px"></img>' + Math.floor(porcentaje.humedad) + 
+                '%</button> <button class="low-btn"><img src="images/preasure.svg" alt="Presion" width="30px" height="30px"></img>' + Math.floor(porcentaje.presion) + '% </button><br></p>' +
                 '<p> Ultima medida: '+ porcentaje.tiempo +'<br></p>' +
                 '<p><a href="javascript:llenarGrafica(\'' + sonda.id + '\', \'' + parcela.nombre + '\')">' +
                 '<button class="boton">Seleccionar sonda</button></a> ' +
@@ -236,6 +262,7 @@ function reiniciarContador() {
     */
 }
 
+/*
 function controlContenedorGrafica(){
     
     //if(window.innerWidth <= 600 && window.innerHeight <= 900){
@@ -273,12 +300,11 @@ function cambiarVisualizacion(eleccion){
         document.getElementById("contenedor-tiempo").style.display = "none";
     }
 }
+*/
+
 
 function mostrarGrafica(extra){
-    if(extra == "-responsive"){
-    document.getElementById("map").style.flex = "1 1 50vh";    
-    document.getElementById("contenedor-grafica-responsive").style.display = "block";
-}
+    console.log(extra);
     var element = document.getElementById("grafica" + extra);
     element.style.display = "flex";
     var element = document.getElementById("nografica" + extra);
