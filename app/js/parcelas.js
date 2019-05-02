@@ -275,9 +275,10 @@ function cambiarVisualizacion(eleccion){
 }
 
 function mostrarGrafica(extra){
+    if(extra == "-responsive"){
     document.getElementById("map").style.flex = "1 1 50vh";    
     document.getElementById("contenedor-grafica-responsive").style.display = "block";
-
+}
     var element = document.getElementById("grafica" + extra);
     element.style.display = "flex";
     var element = document.getElementById("nografica" + extra);

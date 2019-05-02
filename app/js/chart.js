@@ -12,6 +12,8 @@ var ctx = document.getElementById('myChartR');
 var extra = "-responsive"
 }
 
+console.log(extra)
+
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
