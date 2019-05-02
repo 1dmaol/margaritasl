@@ -156,7 +156,10 @@ if(isset($_GET['salir'])){
                     <!--Nos permite dibujar en un "lienzo"-->
                     <h5 style="color:rgb(130,0,83)"><strong>Gráfico de las mediciones</strong></h5>
                     <canvas id="myChart"></canvas>
+                    <div class="d-flex justify-content-center">
+                    <button id="toPDF" onclick="toPDF()" class="boton">Exportar a PDF</button>
                     <button class="boton" onclick="borrarGrafica()">Vaciar gráfica</button>
+                </div>
                 </div>
             </div>
     </div>
@@ -197,7 +200,11 @@ if(isset($_GET['salir'])){
             <!--Nos permite dibujar en un "lienzo"-->
             <h5 style="color:rgb(130,0,83)"><strong>Gráfico de las mediciones</strong></h5>
             <canvas id="myChartR"></canvas>
+            
+            <div class="d-flex justify-content-center">
+            <button id="toPDF-responsive" onclick="toPDF()" class="boton">Exportar a PDF</button>
             <button class="boton" onclick="borrarGrafica()">Vaciar gráfica</button>
+            </div>
         </div>
     </div>
     <script src="js/parcelas.js"></script>
@@ -214,10 +221,13 @@ if(isset($_GET['salir'])){
     </script>
     <!-- carga archivos JS -->
     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/pdf.js"></script>
     <script src="js/chart.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/chart.js"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+    <script src="js/html2canvas.min.js"></script>
     <script src="js/tiempo.js"></script>
 </body>
 

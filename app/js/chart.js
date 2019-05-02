@@ -10,6 +10,8 @@ function isMobileDevice() {
    return false;
 };
 
+var chartURL;
+
 if(!isMobileDevice()){
     console.log("pc")
     var ctx = document.getElementById('myChart');
@@ -26,6 +28,10 @@ var myChart = new Chart(ctx, {
 
     },
     options: {
+        bezierCurve: false,
+        animation: {
+            onComplete: chartUrl
+        },
         scales: {
             yAxes: [{
                 ticks: {
@@ -38,6 +44,10 @@ var myChart = new Chart(ctx, {
 
     }
 });
+
+function chartUrl(){
+    chartURL = myChart.toBase64Image();
+}
 
 function random_rgba() {
     var o = Math.round,
