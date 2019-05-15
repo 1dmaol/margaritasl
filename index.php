@@ -46,6 +46,7 @@
                     <!-- icono de menu desplegable-->
                     <a class="login" href="login.php">
                         <img src="images/user.svg" alt="Perfil">
+                                <strong style="padding-left:13px;font-size:12px;">Log in</strong>
                     </a>
                 </nav>
             </div>

@@ -23,11 +23,11 @@ function toPDF() {
         doc.line(10, 35, 200, 35);
 
         doc.text(35, 44.3, "Usuario:");
-        doc.text(58, 44.3, "Pepito" /*Cliente*/ );
+        doc.text(58, 44.3, "Admin" /*Cliente*/ );
         doc.text(120, 44.3, "Rol:");
         doc.text(132, 44.3, "Cliente" /*Rol*/ );
         doc.text(35, 53.3, "Email:");
-        doc.text(52, 53.3, "Pepito@gmail.com" /*Cliente*/ );
+        doc.text(52, 53.3, "admin@margarita.com" /*Cliente*/ );
         doc.text(120, 53.3, "Fecha:");
         doc.text(140, 53.3, "2-Mayo-2019" /*Fecha actual*/ );
 
@@ -62,7 +62,7 @@ function toPDF() {
         doc.line(20, 180, 190, 180);
 
         //1 sonda +15
-        doc.text(23, 205, "1 (paco)");
+        doc.text(23, 205, "1(paco)");
         doc.text(44, 205, "18ºC");
         doc.text(80, 205, "77%");
         doc.text(108, 205, "21%");
@@ -79,7 +79,7 @@ function toPDF() {
         doc.line(20, 195, 190, 195);
 
         // Otra Sonda +15 a la anterior
-        doc.text(23, 220, "1 (pepe)");
+        doc.text(23, 220, "1(pepe)");
         doc.text(44, 220, "18ºC");
         doc.text(80, 220, "77%");
         doc.text(108, 220, "21%");

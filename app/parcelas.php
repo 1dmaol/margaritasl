@@ -78,6 +78,26 @@ if(isset($_GET['salir'])){
             </div>
         </nav>
     </header>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModal3Label">Borrar nota</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          Estas seguro que deseas borrar la nota?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="boton-secundario" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="boton" onclick="eliminarNota()">Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
     <!--
     <div id="controlPantalla" class="grow" style="text-align:center;">
         <button onclick="controlContenedorGrafica()" class="boton" style="background-color:#FFFFFF;">
@@ -89,35 +109,26 @@ if(isset($_GET['salir'])){
 -->
     <div class="contenedor">
         <div id="herramientas-responsive">
-
-            <div id="listaParcelas-responsive" class="btn-group dropdown">
-                <button type="button" class="boton dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    Lista de parcelas
-                </button>
-                <div id="listaParcelas" class="dropdown-menu">
-                    <div>
-                        <input id="buscador" type="text" placeholder="Buscar..." onkeydown="buscarParcela()">
-                        <div id="parcelas-responsive"></div>
-                    </div>
-                </div>
+            <div id="listaParcelas-responsive" style="margin-top:5px;">
+                <a type="button" class="boton" data-toggle="popover" data-container="body" data-html="true" href="javascript: crearListaParcelas()" 
+                title="Lista de parcelas" data-content="<div id='parcelas-responsive'></div>" data-placement="bottom">Lista de parcelas</a>                
             </div>
 
-                <div id="contenedor-tiempo">
-                    <button class="boton" id="js_w_temp"type="button" data-toggle="collapse" data-target="#prox-tiempo"
-     aria-expanded="false" aria-controls="prox-tiempo"></button>
-                    <div id="prox-tiempo" class="collapse">
-                        <div class="dias" id="js_w_mmDia1"></div>
-                        <div class="dias" id="js_w_mmDia2"></div>
-                        <div class="dias" id="js_w_mmDia3"></div>
-                    </div>
+            <div id="contenedor-tiempo-responsive">
+                <button class="boton" id="js_w_temp-responsive" type="button" data-toggle="collapse"
+                    data-target="#prox-tiempo-responsive" aria-expanded="false"
+                    aria-controls="prox-tiempo-responsive"></button>
+                <div id="prox-tiempo-responsive" class="collapse">
+                    <div class="dias" id="js_w_mmDia1-responsive"></div>
+                    <div class="dias" id="js_w_mmDia2-responsive"></div>
+                    <div class="dias" id="js_w_mmDia3-responsive"></div>
                 </div>
-<!--
-                <div>
-                    <button class="boton">Notas</button>
+            </div>
+            <div style="margin-top:5px;">
+                <a type="button" class="boton" data-toggle="popover" data-container="body" data-html="true" href="javascript: llenarNotas()" 
+                title="<span id='tituloNota'>Notas</span> <a id='añadirNota'><img src='images/plus.svg' alt='Añadir' height='17px' width='17px'></a> <a id='editarNota'><img src='images/edit.svg' alt='Editar' height='17px' width='17px'></a><a id='borrarNota'><img src='images/trash.svg' alt='Borrar' height='17px' width='17px'></a>" data-content="<div id='notas-responsive'></div>" data-placement="bottom">Notas</a>
                 </div>
--->
-        </div>
+            </div>
 
         <div id="herramientas">
             <div id="listaParcelas">
@@ -126,72 +137,72 @@ if(isset($_GET['salir'])){
                     <div id="parcelas"></div>
                 </div>
             </div>
-
+            <hr>
             <div id="listaSondas">
                 <div>
-                    <p>Sondas: </p>
+                    <h5>Sondas: </h5>
                     <div id="sondas"></div>
                 </div>
             </div>
-            <div id="extra">
+            <hr>
 
-                <div id="contenedor-tiempo">
-                    <h5>No tiempo</h5>
+            <div id="contenedor-tiempo">
+                <button class="boton" id="js_w_temp" type="button" data-toggle="collapse" data-target="#prox-tiempo"
+                    aria-expanded="false" aria-controls="prox-tiempo"></button>
+                <div id="prox-tiempo" class="collapse">
+                    <div class="dias" id="js_w_mmDia1"></div>
+                    <div class="dias" id="js_w_mmDia2"></div>
+                    <div class="dias" id="js_w_mmDia3"></div>
                 </div>
-                <div id="contenedor-notas">
-                    <!--<button class="boton">Notas</button>-->
-                </div>
-
             </div>
         </div>
+        <div id="contenedor-notas">
+            <!--<button class="boton">Notas</button>-->
+        </div>
+
         <div id="map">
-            <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async="async" defer="defer"></script>
         </div>
-            <div id="contenedor-grafica" class="collapse">
-                <div id="nografica">
-                    <h5 style="color:rgb(130,0,83)">No hay ninguna sonda seleccionada</h5>
-                    <p>Para seleccionarla, pulse sobre "Seleccionar sonda" de la sonda disponible.</p>
+        <div id="contenedor-grafica" class="collapse">
+            <a class="pantallaCompleta" href="#" style="text-decoration:none;color:black;">
+                <div class="form-inline my-2 my-lg-0" style="float:right;font-size:13px;">
+                    <img src="images/fullscreen.svg" alt="fullscreen" class="editar">
                 </div>
-                <div id="grafica" class="grafica">
-                    <!--Nos permite dibujar en un "lienzo"-->
-                    <h5 style="color:rgb(130,0,83)"><strong>Gráfico de las mediciones</strong></h5>
-                    <canvas id="myChart"></canvas>
-                    <div class="d-flex justify-content-center">
-                    <button id="toPDF" onclick="toPDF()" class="boton">Exportar a PDF</button>
-                    <button class="boton" onclick="borrarGrafica()">Vaciar gráfica</button>
-                </div>
+            </a>
+            <div id="nografica">
+                <h5 style="color:rgb(130,0,83)">No hay ninguna sonda seleccionada</h5>
+                <p>Para seleccionarla, pulse sobre "Seleccionar sonda" de la sonda disponible.</p>
+            </div>
+            <div id="grafica" class="grafica">
+                <!--Nos permite dibujar en un "lienzo"-->
+                <h5 style="color:rgb(130,0,83)"><strong>Gráfico de las mediciones</strong></h5>
+                <canvas id="myChart"></canvas>
+                <div class="d-flex justify-content-center">
+                    <button id="toPDF" onclick="toPDF()" class="boton" style="margin-right:2.5px;">Exportar a
+                        PDF</button>
+                    <button class="boton" onclick="borrarGrafica()" style="margin-left:2.5px;">Vaciar gráfica</button>
                 </div>
             </div>
+        </div>
     </div>
+    <!--
     <div class="flecha-bajar text-center" id="bajar">
         <a href="#contenedor-grafica"> <img src="images/down.svg" alt="Bajar" width="30px" height="30px"></a>
     </div>
-    <div class="position-bottom">
-    <button class="boton" type="button" data-toggle="collapse" data-target="#contenedor-grafica-responsive"
-     aria-expanded="false" aria-controls="contenedor-grafica-responsive">
-        <img id="flecha" src="images/down.svg" alt="Subir" width="15px" height="15px" style="transform: rotate(180deg);">
-        Gráfica
-    </button>
+    -->
+    <div id="desplegableGrafica" class="position-bottom">
+        <button class="boton" type="button" data-toggle="collapse" data-target="#contenedor-grafica-responsive"
+            aria-expanded="false" aria-controls="contenedor-grafica-responsive">
+            <img id="flecha" src="images/down.svg" alt="Subir" width="15px" height="15px"
+                style="transform: rotate(180deg);">
+            Gráfica
+        </button>
     </div>
     <div id="contenedor-grafica-responsive" class="collapse">
-
-        <!-- PAGINATION
-                <ul class="pagination">
-                    <li class="page-item active">
-                    <a class="page-link" href="#!">Gráfico <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#!">Tiempo</a></li>
-                </ul>
-                --
-                <nav class="mt-3 mx-auto" style="width: 19vh;">
-                <ul class="nav nav-pills nav-fill" id="navSonda"><li>
-                        <a class="boton" href="#" onclick="cambiarVisualizacion(this);">Gráfico</a>
-                    </li><li>
-                        <a class="botonUnset" href="#" onclick="cambiarVisualizacion(this);">Tiempo</a>
-                    </li></ul>
-                </nav>
-                <p></p>
-                -->
+        <button class="pantallaCompleta" onclick="fullscreen()">
+            <div class="form-inline my-2 my-lg-0" style="float:right;font-size:13px;">
+                <img src="images/fullscreen.svg" alt="fullscreen" class="editar">
+            </div>
+        </button>
         <div id="nografica-responsive">
             <h5 style="color:rgb(130,0,83)">No hay ninguna sonda seleccionada</h5>
             <p>Para seleccionarla, pulse sobre "Seleccionar sonda" de la sonda disponible.</p>
@@ -200,21 +211,27 @@ if(isset($_GET['salir'])){
             <!--Nos permite dibujar en un "lienzo"-->
             <h5 style="color:rgb(130,0,83)"><strong>Gráfico de las mediciones</strong></h5>
             <canvas id="myChartR"></canvas>
-            
-            <div class="d-flex justify-content-center">
-            <button id="toPDF-responsive" onclick="toPDF()" class="boton">Exportar a PDF</button>
-            <button class="boton" onclick="borrarGrafica()">Vaciar gráfica</button>
+            <div id="fsBox">
+            <img src="images/mapaClima.png" class="img-fluid" alt="Responsive image">
             </div>
+            <div class="d-flex justify-content-center">
+                <button id="toPDF-responsive" onclick="toPDF()" class="boton" style="margin-right:2.5px;">Exportar a
+                    PDF</button>
+                <button class="boton" onclick="quitarGrafica()" style="margin-left:2.5px;">Vaciar gráfica</button>
+            </div>
+        </div>
         </div>
     </div>
     <script src="js/parcelas.js"></script>
     <script src="js/map.js"></script>
     <script>
+        var id = <?php echo $_SESSION['id'] ?> ;
         var charged = true;
-        getVertices(<?php echo $_SESSION['id']; ?>);
-        getParcelas(<?php echo $_SESSION['id']; ?>);
-        getSondas(<?php echo $_SESSION['id']; ?>);
-        getMediciones(<?php echo $_SESSION['id']; ?>);
+        getVertices(id);
+        getParcelas(id);
+        getSondas(id);
+        getMediciones(id);
+        getNotas(id);
         window.addEventListener("load", function () {
             dibujarParcelas();
         })
@@ -229,6 +246,7 @@ if(isset($_GET['salir'])){
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
     <script src="js/html2canvas.min.js"></script>
     <script src="js/tiempo.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async="async" defer="defer"></script>
 </body>
 
 </html>

@@ -27,6 +27,8 @@ $body_params = (array) json_decode(file_get_contents('php://input'));
 // TODO: Recuperar parámetros de Form Data
 $form_params = $_POST;
 
+if(isset($form_params['method'])) $metodo = $form_params['method'];
+
 $output = array();
 
 $output['metodo'] = $metodo;

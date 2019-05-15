@@ -38,22 +38,22 @@ appLocalizacion.muestra = function () {
 // el 306359 es el appLocalizaciin.codigo pero no logro que haya una forma de pasarselo ya que da error al pasarselo directamente
 var appPrediccion = {};
 
-appPrediccion.url = 
+appPrediccion.url =
 
-appPrediccion.cargaDatos = function () {
-    console.log(appLocalizacion.codigo);
-    $.ajax({
-        url: "http://dataservice.accuweather.com/forecasts/v1/daily/5day/"+ appLocalizacion.codigo +"?apikey=" +
-        apiKey + "&language=es&metric=true",
-        success: function (data) {
-            appPrediccion.datos = data;
-            appPrediccion.procesaDatos();
-        },
-        error: function () {
-            alert("algo va mal 2");
-        }
-    });
-}
+    appPrediccion.cargaDatos = function () {
+        console.log(appLocalizacion.codigo);
+        $.ajax({
+            url: "http://dataservice.accuweather.com/forecasts/v1/daily/5day/" + appLocalizacion.codigo + "?apikey=" +
+                apiKey + "&language=es&metric=true",
+            success: function (data) {
+                appPrediccion.datos = data;
+                appPrediccion.procesaDatos();
+            },
+            error: function () {
+                alert("algo va mal 2");
+            }
+        });
+    }
 // se generan la temperatura máxima y mínima de cada día además, obtenemos el icono correspondiente a la situación climática
 appPrediccion.procesaDatos = function () {
     appPrediccion.temperaturaMinDia1 = appPrediccion.datos.DailyForecasts[0].Temperature.Minimum.Value;
@@ -66,17 +66,34 @@ appPrediccion.procesaDatos = function () {
     appPrediccion.iconoDia2 = appPrediccion.obtenIcono(condicionIcono);
     appPrediccion.temperaturaMinDia3 = appPrediccion.datos.DailyForecasts[2].Temperature.Minimum.Value;
     appPrediccion.temperaturaMaxDia3 = appPrediccion.datos.DailyForecasts[2].Temperature.Maximum.Value;
-    condicionIcono = appPrediccion.datos.DailyForecasts[3].Day.Icon;
+    condicionIcono = appPrediccion.datos.DailyForecasts[2].Day.Icon;
     appPrediccion.iconoDia3 = appPrediccion.obtenIcono(condicionIcono);
     appPrediccion.muestra();
 
 }
+
 //función utilizada para mostrar los datos en el html
 appPrediccion.muestra = function () {
-    $('#js_w_mmDia1').append(appPrediccion.iconoDia1 + "<p>Hoy : <p class='minimo'> " + Math.floor(appPrediccion.temperaturaMinDia1) + "</p><p>/</p><p class='maximo'>" + Math.floor(appPrediccion.temperaturaMaxDia1) + "</p> <p>ºC</p></p>");
-    $('#js_w_mmDia2').append(appPrediccion.iconoDia2 + "<p>Mañana : <p class='minimo'> " + Math.floor(appPrediccion.temperaturaMinDia2) + "</p><p>/</p><p class='maximo'>" + Math.floor(appPrediccion.temperaturaMaxDia2) + "</p> <p>ºC</p></p>");
-    $('#js_w_mmDia3').append(appPrediccion.iconoDia3 + "<p>Pasado mañana : <p class='minimo'> " + Math.floor(appPrediccion.temperaturaMinDia3) + "</p><p>/</p><p class='maximo'>" + Math.floor(appPrediccion.temperaturaMaxDia3) + "</p> <p>ºC</p></p>");
+    if (document.getElementById("js_w_mmDia1"+extra).childElementCount != 0)
+        vaciarTiempo();
+    $('#js_w_mmDia1' + extra).append(appPrediccion.iconoDia1 + "<p>Hoy : <p class='minimo'> " + Math.floor(appPrediccion.temperaturaMinDia1) + "</p><p>/</p><p class='maximo'>" + Math.floor(appPrediccion.temperaturaMaxDia1) + "</p> <p>ºC</p></p>");
+    $('#js_w_mmDia2' + extra).append(appPrediccion.iconoDia2 + "<p>Mañana : <p class='minimo'> " + Math.floor(appPrediccion.temperaturaMinDia2) + "</p><p>/</p><p class='maximo'>" + Math.floor(appPrediccion.temperaturaMaxDia2) + "</p> <p>ºC</p></p>");
+    $('#js_w_mmDia3' + extra).append(appPrediccion.iconoDia3 + "<p>Pasado mañana : <p class='minimo'> " + Math.floor(appPrediccion.temperaturaMinDia3) + "</p><p>/</p><p class='maximo'>" + Math.floor(appPrediccion.temperaturaMaxDia3) + "</p> <p>ºC</p></p>");
+    }
+
+function vaciarTiempo() {
+    for(let i=1; i<=3; i++){
+        var e = document.getElementById("js_w_mmDia"+i+""+extra);
+        console.log("js_w_mmDia"+i+""+extra);
+        var child = e.lastElementChild;  
+        while (child) { 
+            e.removeChild(child); 
+            child = e.lastElementChild; 
+        } 
+    }
 }
+
+
 // se devuelve  el icono solicitado en procesaDatos
 appPrediccion.obtenIcono = function (weatherIcon) {
 
@@ -242,5 +259,5 @@ appTiempoActual.procesaDatos = function () {
 
 }
 appTiempoActual.muestra = function () {
-    document.getElementById("js_w_temp").innerHTML = Math.floor(appTiempoActual.temperatura) + "ºC - " + appTiempoActual.ciudad + ", " + appTiempoActual.pais;
+    document.getElementById("js_w_temp" + extra).innerHTML = Math.floor(appTiempoActual.temperatura) + "ºC - " + appTiempoActual.ciudad + ", " + appTiempoActual.pais;
 }

@@ -10,8 +10,6 @@ function isMobileDevice() {
    return false;
 };
 
-var chartURL;
-
 if(!isMobileDevice()){
     console.log("pc")
     var ctx = document.getElementById('myChart');
@@ -40,8 +38,6 @@ var myChart = new Chart(ctx, {
                 }
             }]
         }
-
-
     }
 });
 
@@ -65,8 +61,9 @@ function llenarGrafica(id_sonda, nombre_parcela) {
         if(document.getElementById("grafica-responsive").style.display == "") mostrarGrafica(extra);
     }
 
-    document.getElementById("contenedor-tiempo").style.visibility = "visible";
+    document.getElementById("contenedor-tiempo"+extra).style.visibility = "visible";
 
+    document.getElementById("desplegableGrafica").style.visibility = "visible";
 
     var lista = []
     var identificador;
