@@ -60,7 +60,7 @@ if(isset($_GET['salir'])){
                         <a id="editarPerfil" href="verPerfil.php" style="text-decoration:none;color:black;">
                             <div class="form-inline my-2 my-lg-0" style="float:right;font-size:13px;">
                                 Editar
-                                <img src="images/pencil-alt-solid.svg" alt="editar" class="editar">
+                                <img src="images/edit.svg" alt="editar" class="editar">
                             </div>
                         </a>
                         <div class="form-inline my-2 my-lg-0">

@@ -176,8 +176,10 @@ function eliminarNota() {
             })
         })
         .then(res => res.text()) // OR res.json()
-        .then(res => {elemento.remove(); 
-            $('#myModal').modal('hide');})
+        .then(res => {
+            elemento.remove();
+            $('#myModal').modal('hide');
+        })
 }
 
 function editarNota(codigo) {
@@ -201,7 +203,7 @@ function editarNota(codigo) {
     })
 }
 
-function actualizarNota(codigo, datos){
+function actualizarNota(codigo, datos) {
     console.log(datos)
     document.getElementById("borrarNota").style.visibility = "hidden"
     document.getElementById("editarNota").style.visibility = "hidden"
@@ -525,7 +527,6 @@ function mostrarPosicionesMapa(id) {
                 '<p> Ultima medida: ' + porcentaje.tiempo + '<br></p>' +
                 '<p><a href="javascript:llenarGrafica(\'' + sonda.id + '\', \'' + parcela.nombre + '\')">' +
                 '<button class="boton">Seleccionar sonda</button></a> ' +
-                '<button id="graficaBoton" class="boton" data-toggle="collapse" data-target="#contenedor-grafica" aria-expanded="false" aria-controls="contenedor-grafica"><img id="miniatura" src="images/chart.svg" alt="Grafica" height="25px" width="25px"> Mostrar gráfica </button>' +
                 '</div>' +
                 '</div>';
             ponerPunto(new google.maps.LatLng(parseFloat(sonda.lat), parseFloat(sonda.lng)), contenido, id)
@@ -535,7 +536,6 @@ function mostrarPosicionesMapa(id) {
 
 function aumentarContador(id_sonda, nombre_parcela) {
     qSondas++;
-
     var element = document.getElementById("sondas");
     var input = document.createElement("input");
     var label = document.createElement("label");
@@ -617,6 +617,11 @@ function mostrarGrafica(extra) {
     element.style.display = "flex";
     var element = document.getElementById("nografica" + extra);
     element.style.display = "none";
+    if (extra != "-responsive") { 
+        '<button id="graficaBoton" class="boton" data-toggle="collapse" data-target="#contenedor-grafica" aria-expanded="false" aria-controls="contenedor-grafica"><img id="miniatura" src="images/chart.svg" alt="Grafica" height="25px" width="25px"> Mostrar gráfica </button>' +
+        $("#contenedor-grafica").collapse();
+
+    }
 }
 
 function quitarGrafica() {

@@ -1,16 +1,16 @@
-function isMobileDevice() {    
-    if( navigator.userAgent.match(/Android/i)
-    || navigator.userAgent.match(/webOS/i)
-    || navigator.userAgent.match(/iPhone/i)
-    || navigator.userAgent.match(/iPad/i)
-    || navigator.userAgent.match(/iPod/i)
-    || navigator.userAgent.match(/BlackBerry/i)
-    || navigator.userAgent.match(/Windows Phone/i))
-   return true;
-   return false;
+function isMobileDevice() {
+    if (navigator.userAgent.match(/Android/i) ||
+        navigator.userAgent.match(/webOS/i) ||
+        navigator.userAgent.match(/iPhone/i) ||
+        navigator.userAgent.match(/iPad/i) ||
+        navigator.userAgent.match(/iPod/i) ||
+        navigator.userAgent.match(/BlackBerry/i) ||
+        navigator.userAgent.match(/Windows Phone/i))
+        return true;
+    return false;
 };
 
-if(!isMobileDevice()){
+if (!isMobileDevice()) {
     console.log("pc")
     var ctx = document.getElementById('myChart');
     var extra = ""
@@ -41,7 +41,7 @@ var myChart = new Chart(ctx, {
     }
 });
 
-function chartUrl(){
+function chartUrl() {
     chartURL = myChart.toBase64Image();
 }
 
@@ -55,13 +55,8 @@ function random_rgba() {
 var datos = [];
 
 function llenarGrafica(id_sonda, nombre_parcela) {
-    if (extra != "-responsive"){
-        if(document.getElementById("grafica").style.display == "") mostrarGrafica(extra);}
-    else {
-        if(document.getElementById("grafica-responsive").style.display == "") mostrarGrafica(extra);
-    }
-
-    document.getElementById("contenedor-tiempo"+extra).style.visibility = "visible";
+    if (document.getElementById("grafica" + extra).style.display == "") mostrarGrafica(extra);
+    document.getElementById("contenedor-tiempo" + extra).style.visibility = "visible";
 
     document.getElementById("desplegableGrafica").style.visibility = "visible";
 
@@ -74,7 +69,7 @@ function llenarGrafica(id_sonda, nombre_parcela) {
         }
     });
     sondas.forEach(sonda => {
-        if (sonda.id == id_sonda){
+        if (sonda.id == id_sonda) {
             latitud = sonda.lat;
             longitud = sonda.lng;
         }
@@ -102,8 +97,8 @@ function llenarGrafica(id_sonda, nombre_parcela) {
         myChart.update();
         datos.push(identificador);
 
-    aumentarContador(id_sonda, nombre_parcela);
-    }else{
+        aumentarContador(id_sonda, nombre_parcela);
+    } else {
         alert("Los datos de la sonda ya se muestran en la gráfica.");
     }
 }
